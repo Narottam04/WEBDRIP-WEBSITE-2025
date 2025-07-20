@@ -1,0 +1,185 @@
+---
+import orb from "../../assets/orb animation.mp4";
+import bgGif from "../../assets/giphy-1.gif";
+---
+
+<header id="main-section" class="bg-main text-white h-[90.5vh] overflow-hidden">
+  <div
+    class="max-w-[1300px] h-[80vh] mx-auto flex flex-col justify-center relative z-10 px-4"
+  >
+    <h1
+      class="text-[calc(1.5rem+2vw)] font-semibold leading-snug pb-8 text-gray-200"
+    >
+      I build <span class="animated-text-wrapper">
+        <span class="animated-text font-bold gradient-text">Mobile Apps</span>
+      </span>
+      <br /> that grow fast, work everywhere, and feel effortless.
+    </h1>
+    <p class="text-xl pt-2 text-gray-300">Let's make your business online</p>
+    <p class="text-xl pt-2 text-gray-300">Get in touch</p>
+
+    {/* ... rest of your HTML ... */}
+    <a
+      href="/contact/index.html"
+      class="button uppercase tracking-widest mt-12 inline-block border border-white text-white py-2 px-6 transition-all duration-200 hover:px-10 w-46 hover:w-54 text-center"
+    >
+      Contact Us
+    </a>
+
+    <!-- <a
+      href="/contact/index.html"
+      class="email text-white font-mont mt-4 inline-flex items-center gap-2"
+    >
+      Get in touch <i class="fas fa-long-arrow-alt-right"></i>
+      <span class="uppercase">business@webdrip.in</span>
+    </a>
+    <p
+      class="social-header font-mont mt-8 flex items-center gap-4 text-white text-sm uppercase"
+    >
+      <span>Social</span>
+      <i class="fas fa-long-arrow-alt-right"></i>
+      <a
+        href="https://www.instagram.com/_webdrip/"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="instagram">IG</a
+      >
+      <a
+        href="https://twitter.com/_Narottam_dev"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Twitter">TW</a
+      >
+      <a
+        href="https://www.facebook.com/profile.php?id=100067005870176"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Facebook">FB</a
+      >
+      <a
+        href="https://www.linkedin.com/in/narottam-sahu-40008a1bb/"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Linkedin">LI</a
+      >
+    </p> -->
+  </div>
+
+  <!-- <video
+    src={orb}
+    autoplay
+    muted
+    loop
+    class="absolute top-1/2 left-1/2 w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 z-0 opacity-30"
+  ></video> -->
+</header>
+
+<style>
+  /* Define CSS custom properties for the gradient */
+  :root {
+    --bg-darker: #0d1019;
+    --bgp-dark: #1133b6;
+    --bgp-lighter: #d9e6ff;
+  }
+
+  .animated-text-wrapper {
+    display: inline-block;
+    height: calc(1em + 1rem);
+    overflow: hidden;
+    /* FIX 1: Changed from 'bottom' to 'top' for better alignment */
+    vertical-align: top;
+    /* We will set the width with JS, but text-align helps shorter words */
+    text-align: left;
+    /* Add a smooth transition for the width itself, just in case */
+    transition: width 0.3s ease-in-out;
+  }
+
+  .animated-text {
+    display: inline-block;
+    transition:
+      transform 0.4s cubic-bezier(0.2, 1, 0.3, 1),
+      opacity 0.4s;
+    transform: translateY(0%);
+    opacity: 1;
+    white-space: nowrap; /* Prevents long text from wrapping inside the animation */
+  }
+
+  .animated-text.exit {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+
+  .animated-text.enter {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+
+  .bg-main {
+    background-image: linear-gradient(180deg, var(--bg-darker), #2e2e2e00 49%),
+      radial-gradient(
+        circle farthest-corner at 50% 100%,
+        #d3d7033d,
+        #36363600 63%
+      ),
+      radial-gradient(circle farthest-corner at 100% 100%, #ffffff03, #0000 39%),
+      linear-gradient(180deg, #0000 70%, #ffffff0d),
+      radial-gradient(circle farthest-corner at 55% 0%, #0e0e0f, #2e2e2e00),
+      linear-gradient(
+        180deg,
+        var(--bgp-dark),
+        #8da2e3db 62%,
+        var(--bgp-lighter)
+      ),
+      url("../../assets/giphy-1.gif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .gradient-text {
+    /* The gradient background */
+    background-image: linear-gradient(360deg, #1a2a4c, #5676c9d1, white 60%);
+
+    /* Clip the background to the text */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* Make the text color transparent */
+    -webkit-text-fill-color: transparent;
+
+    /* Ensures the gradient covers the text properly */
+    background-size: 100% 100%;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const wrapperElement = document.querySelector(".animated-text-wrapper");
+    const textElement = document.querySelector(".animated-text");
+    if (!wrapperElement || !textElement) return;
+
+    const texts = ["Mobile Apps", "Websites", "AI Automation"];
+    let currentIndex = 0;
+    const holdDuration = 3000;
+    const transitionDuration = 400;
+
+    // --- Animation Loop ---
+    function animateText() {
+      textElement.classList.add("exit");
+
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % texts.length;
+        textElement.textContent = texts[currentIndex];
+
+        textElement.classList.add("enter");
+        textElement.classList.remove("exit");
+
+        setTimeout(() => {
+          textElement.classList.remove("enter");
+        }, 20);
+      }, transitionDuration);
+    }
+
+    setInterval(animateText, holdDuration);
+  });
+</script>

@@ -1,0 +1,146 @@
+---
+// src/components/Faq.astro
+
+// FAQ data for easy management
+const faqs = [
+  {
+    question: "What is your typical project timeline?",
+    answer:
+      "Project timelines can vary depending on the scope and complexity. A simple animation might take 1-2 weeks, while a full brand video could take 4-8 weeks. We will provide a detailed timeline after our initial consultation.",
+  },
+  {
+    question: "Do you offer design consultancy?",
+    answer:
+      "Yes, absolutely. Beyond production, I offer design consultancy to help you refine your visual strategy, develop brand guidelines, and ensure your creative direction aligns with your business goals.",
+  },
+  {
+    question: "Can you work with existing brand guidelines?",
+    answer:
+      "Certainly. I have extensive experience working with established brand guidelines to ensure all creative output is consistent with your brand identity, tone, and voice.",
+  },
+  {
+    question: "How do you handle revisions and feedback?",
+    answer:
+      "Feedback is a crucial part of the creative process. My process includes specific checkpoints for client review and feedback (e.g., after storyboarding, first animation draft). I use tools that make providing feedback easy and clear.",
+  },
+  {
+    question: "How do I get started?",
+    answer:
+      "Getting started is easy! Just send me a message through the contact form with a brief description of your project. From there, we can schedule an initial consultation to discuss your vision and goals in detail.",
+  },
+];
+---
+
+<div class="text-white py-12 md:py-24">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Component Header -->
+    <header class="text-center mb-12">
+      <h2 class="text-5xl md:text-6xl font-medium">Got Questions?</h2>
+    </header>
+
+    <!-- FAQ Accordion -->
+    <div class="space-y-4">
+      {
+        faqs.map((faq, index) => (
+          // NOTE: Removed 'border' and 'border-gray-800/50' for the new gradient style
+          <details class="faq-item group mt-6  rounded-lg overflow-hidden">
+            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+              <div class="flex items-center gap-4">
+                <span class="text-gray-500 font-mono text-sm">
+                  0{index + 1}
+                </span>
+                <h3 class="text-lg font-medium text-gray-200">
+                  {faq.question}
+                </h3>
+              </div>
+              <div class="relative w-6 h-6 flex-shrink-0">
+                <span class="absolute h-px w-4 bg-gray-400 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                <span class="absolute w-px h-4 bg-gray-400 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 group-open:rotate-90" />
+              </div>
+            </summary>
+            <div class="faq-content overflow-hidden">
+              <div class="px-6 pb-6 text-gray-400 leading-relaxed">
+                {faq.answer}
+              </div>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+  // This script uses the Web Animations API for smooth accordion animations.
+  document.querySelectorAll(".faq-item").forEach((item) => {
+    const summary = item.querySelector("summary");
+    const content = item.querySelector(".faq-content");
+
+    summary.addEventListener("click", (event) => {
+      // Prevent the default <details> behavior to control the animation.
+      event.preventDefault();
+
+      if (item.open) {
+        // === Start closing animation ===
+        const closingAnimation = content.animate(
+          // Animate from current height to 0.
+          { height: [`${content.offsetHeight}px`, "0px"] },
+          { duration: 300, easing: "ease-out" }
+        );
+
+        // After the animation finishes, remove the 'open' attribute.
+        closingAnimation.onfinish = () => {
+          item.removeAttribute("open");
+        };
+      } else {
+        // === Start opening animation ===
+        item.setAttribute("open", "");
+
+        // Animate from 0 to the full height of the content.
+        const openingAnimation = content.animate(
+          { height: ["0px", `${content.scrollHeight}px`] },
+          { duration: 300, easing: "ease-out" }
+        );
+
+        // After animation, set height to 'auto' for responsiveness.
+        openingAnimation.onfinish = () => {
+          content.style.height = "auto";
+        };
+      }
+    });
+  });
+</script>
+
+<style>
+  .faq-content {
+    /* We animate height with JS, so we set the initial state here. */
+    height: 0;
+  }
+
+  details[open] > .faq-content {
+    /* When open, let height be determined by its content (or JS). */
+    height: auto;
+  }
+
+  /* --- New styles for the gradient border --- */
+  .faq-item {
+    position: relative; /* Needed for pseudo-element positioning */
+    border: none; /* Remove default border as we're creating a custom one */
+  }
+
+  .faq-item::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* Cover the entire card */
+    padding: 2px; /* This creates the border thickness */
+    border-radius: 0.5rem; /* Match the card's border-radius (rounded-lg) */
+    background: linear-gradient(360deg, #1a2a4c, #5676c9d1, white 70%)
+      border-box;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1; /* Place it behind the content */
+  }
+</style>

@@ -1,0 +1,113 @@
+---
+export interface Props {
+  items: string[];
+  speed?: "slow" | "normal" | "fast";
+  separator?: string;
+  className?: string;
+  textColor?: string;
+  backgroundColor?: string;
+  separatorColor?: string;
+}
+
+const {
+  items,
+  speed = "normal",
+  separator = "*",
+  className = "",
+  textColor = "text-white",
+  backgroundColor = "bg-[#0D1019]",
+  separatorColor = "text-blue-400",
+} = Astro.props;
+
+const speedClasses = {
+  slow: "animate-[scroll_60s_linear_infinite]",
+  normal: "animate-[scroll_40s_linear_infinite]",
+  fast: "animate-[scroll_20s_linear_infinite]",
+};
+
+const scrollSpeed = speedClasses[speed];
+---
+
+<div class={`relative overflow-hidden ${backgroundColor} ${className}`}>
+  <!-- Left fade shadow -->
+  <div
+    class="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-black to-transparent z-10"
+  >
+  </div>
+
+  <!-- Right fade shadow -->
+  <div
+    class="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-black to-transparent z-10"
+  >
+  </div>
+
+  <!-- Scrolling content -->
+  <div class={`flex whitespace-nowrap ${scrollSpeed}`}>
+    <!-- First instance -->
+    <div class="flex items-center space-x-8 px-8 shrink-0">
+      {
+        items.map((item, index) => (
+          <Fragment>
+            <span class={`${textColor} text-sm md:text-3xl font-medium`}>
+              {item}
+            </span>
+            <span
+              id="seperator"
+              class={`${separatorColor} text-lg md:text-5xl font-bold`}
+            >
+              {separator}
+            </span>
+          </Fragment>
+        ))
+      }
+    </div>
+
+    <!-- Second instance for seamless loop -->
+    <div class="flex items-center space-x-8 px-8 shrink-0">
+      {
+        items.map((item, index) => (
+          <Fragment>
+            <span class={`${textColor} text-sm md:text-3xl font-medium`}>
+              {item}
+            </span>
+            <span
+              id="seperator"
+              class={`${separatorColor} text-lg md:text-5xl font-bold`}
+            >
+              {separator}
+            </span>
+          </Fragment>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  #seperator {
+    background-color: linear-gradient(180deg, var(--bg-darker), #2e2e2e00 49%),
+      radial-gradient(
+        circle farthest-corner at 50% 100%,
+        #d3d7033d,
+        #36363600 63%
+      ),
+      radial-gradient(circle farthest-corner at 100% 100%, #ffffff03, #0000 39%),
+      linear-gradient(180deg, #0000 70%, #ffffff0d),
+      radial-gradient(circle farthest-corner at 55% 0%, #0e0e0f, #2e2e2e00),
+      linear-gradient(
+        180deg,
+        var(--bgp-dark),
+        #8da2e3db 62%,
+        var(--bgp-lighter)
+      );
+  }
+</style>

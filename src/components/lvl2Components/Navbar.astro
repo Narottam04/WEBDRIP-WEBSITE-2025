@@ -1,0 +1,142 @@
+---
+// Navbar.astro
+import Logo from "../../assets/logo.svg";
+---
+
+<nav class="z-50 relative">
+  <!-- desktop navbar -->
+  <div class="flex justify-between max-w-[1300px] mx-auto">
+    <!-- Logo -->
+    <div class="flex items-center">
+      <Logo class="w-60 h-20" />
+    </div>
+
+    <!-- Center Section - Desktop only -->
+    <div class="hidden lg:flex items-center space-x-2">
+      <!-- Navigation -->
+      <nav class="flex items-center bg-background px-4 py-2 text-white">
+        <a
+          href="/"
+          class="nav-link px-4 py-2 text-lg font-medium transition-all duration-300 hover:text-blue-400 relative overflow-hidden"
+        >
+          <span class="nav-text">Home</span>
+        </a>
+        <a
+          href="/work"
+          class="nav-link px-4 py-2 text-lg font-medium transition-all duration-300 hover:text-blue-400 relative overflow-hidden"
+        >
+          <span class="nav-text">Work</span>
+        </a>
+        <a
+          href="/services"
+          class="nav-link px-4 py-2 text-lg font-medium transition-all duration-300 hover:text-blue-400 relative overflow-hidden"
+        >
+          <span class="nav-text">Services</span>
+        </a>
+        <a
+          href="/approach"
+          class="nav-link px-4 py-2 text-lg font-medium transition-all duration-300 hover:text-blue-400 relative overflow-hidden"
+        >
+          <span class="nav-text">Approach</span>
+        </a>
+        <a
+          href="/about"
+          class="nav-link px-4 py-2 text-lg font-medium transition-all duration-300 hover:text-blue-400 relative overflow-hidden"
+        >
+          <span class="nav-text">About</span>
+        </a>
+        <a
+          href="/contact"
+          class="nav-link px-4 py-2 text-lg font-medium transition-all duration-300 hover:text-blue-400 relative overflow-hidden"
+        >
+          <span class="nav-text">Contact</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Right Section -->
+    <div class="lg:hidden flex items-center">
+      <!-- <a
+        href="/contact"
+        class="px-4 py-2 text-lg font-medium transition-colors hover:/80 text-white"
+      >
+        Email us
+      </a> -->
+
+      <button
+        id="mobile-menu-button"
+        class="p-2 text-white hover:bg-white/10 rounded-md transition-colors"
+      >
+        <svg
+          class="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <span class="sr-only">Toggle menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .nav-link {
+    position: relative;
+    display: inline-block;
+  }
+
+  .nav-text {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .nav-link::before {
+    content: "(" attr(data-text) ")";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #60a5fa; /* blue-400 */
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-link:hover .nav-text {
+    transform: translateY(-100%);
+  }
+
+  .nav-link:hover::before {
+    transform: translateY(0);
+  }
+
+  /* Set data attributes for the pseudo-element content */
+  .nav-link:nth-child(1)::before {
+    content: "(Home)";
+  }
+  .nav-link:nth-child(2)::before {
+    content: "(Work)";
+  }
+  .nav-link:nth-child(3)::before {
+    content: "(Services)";
+  }
+  .nav-link:nth-child(4)::before {
+    content: "(Approach)";
+  }
+  .nav-link:nth-child(5)::before {
+    content: "(About)";
+  }
+  .nav-link:nth-child(6)::before {
+    content: "(Contact)";
+  }
+</style>

@@ -1,0 +1,191 @@
+---
+// Socials.astro
+// This is a self-contained Astro component.
+// It uses Tailwind CSS for styling and includes a custom <style> block
+// for the complex gradient hover effect you requested.
+---
+
+<!-- 
+  The <style> block below defines the custom CSS for the hover effect.
+  - We define the CSS variables used in your gradient.
+  - The .social-card:hover selector applies the complex background when a user hovers over any card.
+  - A transition is added for a smooth visual effect.
+-->
+<style>
+  :root {
+    /* Default values for the CSS variables in your gradient */
+    --bg-darker: #1a1a1a;
+    --bgp-dark: #111111;
+    --bgp-lighter: #333333;
+  }
+
+  .social-card {
+    /* Smooth transition for background and color changes */
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* This is the complex gradient hover effect you provided.
+    It's applied to any element with the 'social-card' class on hover.
+  */
+  .social-card:hover {
+    color: white; /* Change text to white for better contrast on the dark hover background */
+    border-color: transparent; /* Hide the border on hover */
+    background-image: linear-gradient(180deg, var(--bg-darker), #2e2e2e00 49%),
+      radial-gradient(
+        circle farthest-corner at 50% 100%,
+        #d3d7033d,
+        #36363600 63%
+      ),
+      radial-gradient(
+        circle farthest-corner at 100% 100%,
+        #ffffff03,
+        #00000000 39%
+      ),
+      linear-gradient(180deg, #00000000 70%, #ffffff0d),
+      radial-gradient(circle farthest-corner at 55% 0%, #0e0e0f, #2e2e2e00),
+      linear-gradient(
+        180deg,
+        var(--bgp-dark),
+        #8da2e3db 62%,
+        var(--bgp-lighter)
+      );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Make the hover effect on the icon placeholders more noticeable */
+  .social-card:hover .icon-placeholder {
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+  }
+
+  /* The green 'Get in touch' card should also have its icon color change on hover */
+  .social-card:hover .arrow-placeholder {
+    color: #f0f0f0;
+  }
+</style>
+
+<!-- Main container to center content and set a max-width -->
+<div class="max-w-[1300px] mx-auto">
+  <section class="font-sans p-4 sm:p-8 text-[#333]">
+    <!-- Header Section -->
+    <div class="mb-12">
+      <p class="text-zinc-500 flex items-center gap-2 text-sm mb-2">
+        <span class="w-2 h-2 bg-lime-400 rounded-full"></span>
+        [06] -- Contact me
+      </p>
+      <h2 class="text-5xl md:text-6xl font-bold">My Socials</h2>
+    </div>
+
+    <!-- Grid for Social Links -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- LinkedIn Card -->
+      <div
+        class="social-card bg-white border border-zinc-200/80 rounded-2xl p-8 flex justify-between items-center cursor-pointer min-h-[160px]"
+      >
+        <span class="font-medium text-xl">LinkedIn</span>
+        <!-- Icon Placeholder -->
+        <div
+          class="icon-placeholder w-14 h-14 bg-lime-400/20 text-lime-600 rounded-full flex items-center justify-center transition-colors"
+        >
+          <!-- This is a placeholder for the LinkedIn SVG icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-linkedin"
+            ><path
+              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+            ></path><rect width="4" height="12" x="2" y="9"></rect><circle
+              cx="4"
+              cy="4"
+              r="2"></circle></svg
+          >
+        </div>
+      </div>
+
+      <!-- Instagram Card -->
+      <div
+        class="social-card bg-white border border-zinc-200/80 rounded-2xl p-8 flex justify-between items-center cursor-pointer min-h-[160px]"
+      >
+        <span class="font-medium text-xl">Instagram</span>
+        <!-- Icon Placeholder -->
+        <div
+          class="icon-placeholder w-14 h-14 bg-lime-400/20 text-lime-600 rounded-full flex items-center justify-center transition-colors"
+        >
+          <!-- This is a placeholder for the Instagram SVG icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-instagram"
+            ><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path
+              d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line
+              x1="17.5"
+              x2="17.51"
+              y1="6.5"
+              y2="6.5"></line></svg
+          >
+        </div>
+      </div>
+
+      <!-- YouTube Card -->
+      <div
+        class="social-card bg-white border border-zinc-200/80 rounded-2xl p-8 flex justify-between items-center cursor-pointer min-h-[160px]"
+      >
+        <span class="font-medium text-xl">YouTube</span>
+        <!-- Icon Placeholder -->
+        <div
+          class="icon-placeholder w-14 h-14 bg-lime-400/20 text-lime-600 rounded-full flex items-center justify-center transition-colors"
+        >
+          <!-- This is a placeholder for the YouTube SVG icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-youtube"
+            ><path
+              d="M2.5 17a24.12 24.12 0 0 1 0-10C2.5 6 4.5 4 7 4h10c2.5 0 4.5 2 4.5 4.5v5c0 2.5-2 4.5-4.5 4.5H7c-2.5 0-4.5-2-4.5-4.5Z"
+            ></path><path d="m10 15 5-3-5-3z"></path></svg
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- "Get in touch" Card -->
+    <div class="mt-8">
+      <div
+        class="social-card bg-lime-400 text-zinc-800 rounded-2xl p-8 flex justify-between items-end cursor-pointer max-w-md"
+      >
+        <div>
+          <span class="font-medium text-xl">Get in touch</span>
+        </div>
+        <!-- Arrow Placeholder -->
+        <div
+          class="arrow-placeholder text-5xl font-light -rotate-45 transition-colors"
+        >
+          &rarr;
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

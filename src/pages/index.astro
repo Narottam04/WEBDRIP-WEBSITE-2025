@@ -1,0 +1,41 @@
+---
+import Header from "../components/lvl2Components/Header.astro";
+import Navbar from "../components/lvl2Components/Navbar.astro";
+import CreativeJourneyMain from "../components/lvl2Components/CreateJourneyMain.astro";
+import HowItWorks from "../components/lvl2Components/HowItWorks.astro";
+import Testimonials from "../components/lvl2Components/Testimonials.astro";
+import Faq from "../components/lvl2Components/Faq.astro";
+import Social from "../components/lvl2Components/Social.astro";
+import Footer from "../components/lvl2Components/Footer.astro";
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import ScrollingText from "../components/lvl1Components/ScrollingText.astro";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+const clientStats = [
+  "5+ years of experience",
+  "> 95% / client retention rate",
+  "100+ / satisfied clients",
+  // "250+ / projects finished",
+];
+---
+
+<Layout>
+  <Navbar />
+  <Header />
+  <!-- <Welcome /> -->
+  <div class="">
+    <ScrollingText items={clientStats} speed="normal" className="py-4" />
+  </div>
+  <CreativeJourneyMain />
+  <HowItWorks />
+  <Testimonials />
+  <Faq />
+  <!-- <Social /> -->
+  <div class="">
+    <ScrollingText items={clientStats} speed="normal" className="py-4" />
+  </div>
+  <Footer />
+</Layout>

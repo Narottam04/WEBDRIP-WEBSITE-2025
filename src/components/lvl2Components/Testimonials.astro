@@ -1,0 +1,153 @@
+---
+// src/components/Testimonials.astro
+
+// Testimonial data - makes it easy to add, remove, or edit testimonials
+const testimonials = [
+  {
+    rating: 5,
+    quote:
+      "Vikas is a top-notch designer - responsive, open to feedback, and great at iterating to perfect designs. His Dreamforce booths were hits, even making a 'top booths' list. Skilled in digital & physical media, he'd be an asset to any team!",
+    author: "Chris L.",
+    avatar: "bg-blue-400", // Placeholder color
+  },
+  {
+    rating: 5,
+    quote:
+      "Vikas is a skilled, resourceful designer who delivered high-quality visuals, animations, and motion graphics while evolving our brand. He quickly turns concepts into polished work, excels at feedback, and creates engaging content - both static and motion. Highly recommended!",
+    author: "Julian Devanesan",
+    avatar: "bg-purple-400", // Placeholder color
+  },
+  {
+    rating: 4.5,
+    quote:
+      "I had the pleasure of working with Vikas as an Illustrator on several projects and I can confidently say that he is one of the most talented and dedicated professionals in the field.",
+    author: "Baljinder Kaur",
+    avatar: "bg-green-400", // Placeholder color
+  },
+  {
+    rating: 5,
+    quote:
+      "I had the pleasure of working with Vikas. He is very creative and always ready to help and share his ideas.",
+    author: "Shye Choudhury",
+    avatar: "bg-red-400", // Placeholder color
+  },
+];
+
+// Duplicate testimonials for a seamless loop
+const repeatedTestimonials = [...testimonials, ...testimonials];
+---
+
+<style>
+  /* Keyframe animation for the infinite scroll */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      /* Move the container left by the width of the original set of testimonials */
+      transform: translateX(calc(-100% / 2));
+    }
+  }
+
+  /* Apply the animation to the flex container */
+  .scrolling-wrapper {
+    animation: scroll 40s linear infinite;
+  }
+
+  /* New styles for the card to apply a gradient border */
+  .card {
+    position: relative; /* Needed for pseudo-element positioning */
+    /* background-color: #1c1c1c; Keep your original card background */
+    border: none; /* Remove default border as we're creating a custom one */
+    /* Add padding to account for the pseudo-element border */
+    padding: 6px; /* Adjust as needed to control border thickness */
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* Cover the entire card */
+    padding: 2px; /* This creates the border thickness */
+    border-radius: 0.5rem; /* Match the card's border-radius */
+    background: linear-gradient(360deg, #1a2a4c, #5676c9d1, white 70%)
+      border-box;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1; /* Place it behind the content */
+  }
+
+  /* Adjust the inner content's padding to match */
+  .card > div {
+    padding: 1.5rem; /* Original p-6 translates to 1.5rem */
+    /* background-color: #1c1c1c; Ensure content background matches card background */
+    border-radius: inherit; /* Inherit border-radius from parent for rounded inner content */
+    height: 100%; /* Ensure inner content fills the card */
+  }
+</style>
+
+<div class="text-white py-12 md:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="text-center mb-12 md:mb-16">
+      <p class="text-blue-400 font-mono text-sm mb-2">[04] — Testimonials</p>
+      <h2 class="text-5xl md:text-7xl font-bold">
+        Don't take my word for it<span class="text-blue-400">*</span>
+      </h2>
+      <p class="text-blue-400 mt-4">*Hear from my clients and colleagues</p>
+    </header>
+  </div>
+
+  <div class="w-full overflow-hidden relative">
+    <div
+      class="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-[#111111] to-transparent z-10"
+    >
+    </div>
+    <div
+      class="absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-[#111111] to-transparent z-10"
+    >
+    </div>
+
+    <div class="scrolling-wrapper flex gap-6">
+      {
+        repeatedTestimonials.map((testimonial, index) => (
+          <div class="card flex-shrink-0 w-80 md:w-96 rounded-lg flex flex-col justify-between">
+            {/* The actual content of the card is now wrapped in a div */}
+            <div>
+              <div>
+                <div class="flex justify-between items-start mb-4">
+                  <div class="flex items-center gap-1">
+                    {/* Updated to display actual rating */}
+                    <span class="text-xs">{testimonial.rating}/5</span>
+                    <div class="flex text-green-500">
+                      {"★★★★★".split("").map((star, i) => (
+                        <span
+                          class={
+                            i < Math.floor(testimonial.rating)
+                              ? "text-green-500"
+                              : "text-gray-600"
+                          }
+                        >
+                          {star}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <span class="text-6xl text-gray-600/50 leading-[0.5] font-serif">
+                    ”
+                  </span>
+                </div>
+                <p class="text-gray-300 leading-relaxed">{testimonial.quote}</p>
+              </div>
+              <div class="flex items-center gap-3 mt-6">
+                <div class={`w-8 h-8 rounded-full ${testimonial.avatar}`} />
+                <span class="text-sm font-medium">{testimonial.author}</span>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
