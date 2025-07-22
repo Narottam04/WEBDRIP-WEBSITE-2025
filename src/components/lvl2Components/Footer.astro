@@ -1,6 +1,8 @@
 ---
 // Import necessary components, like icons, here.
 import Logo from "../../assets/logo.svg";
+
+const year = new Date().getFullYear();
 ---
 
 <footer class="bg-main text-white px-6 pt-40 py-12 md:px-12 lg:px-16">
@@ -18,12 +20,13 @@ import Logo from "../../assets/logo.svg";
       </div>
 
       <div class="lg:mt-0">
-        <button
+        <a
+          href="/contact"
           class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 transition-colors px-6 py-3 rounded-full text-white border border-white/30"
         >
           <div class="w-2 h-2 bg-white rounded-full"></div>
           Contact us
-        </button>
+        </a>
       </div>
     </div>
 
@@ -53,7 +56,8 @@ import Logo from "../../assets/logo.svg";
             <div class="flex items-center gap-2">
               <!-- <ArrowRight class="w-4 h-4" /> -->
               <a
-                href="#"
+                href="https://www.instagram.com/_webdrip/"
+                target="_blank"
                 class="text-white hover:opacity-80 transition-opacity"
               >
                 Instagram
@@ -62,7 +66,8 @@ import Logo from "../../assets/logo.svg";
             <div class="flex items-center gap-2">
               <!-- <ArrowRight class="w-4 h-4" /> -->
               <a
-                href="#"
+                href="https://x.com/NarottamCodez"
+                target="_blank"
                 class="text-white hover:opacity-80 transition-opacity"
               >
                 X
@@ -71,7 +76,8 @@ import Logo from "../../assets/logo.svg";
             <div class="flex items-center gap-2">
               <!-- <ArrowRight class="w-4 h-4" /> -->
               <a
-                href="#"
+                href="https://www.linkedin.com/in/narottam-sahu-40008a1bb/"
+                target="_blank"
                 class="text-white hover:opacity-80 transition-opacity"
               >
                 LinkedIn
@@ -85,7 +91,9 @@ import Logo from "../../assets/logo.svg";
     <div
       class="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-8 border-t border-white/20 text-sm opacity-80"
     >
-      <div>© 2025 WEBDRIP. All rights reserved.</div>
+      <div>
+        © <span id="footer-year">{year}</span> WEBDRIP. All rights reserved.
+      </div>
       <a
         href="#"
         class="mt-4 sm:mt-0 text-white hover:opacity-80 transition-opacity"
@@ -119,3 +127,7 @@ import Logo from "../../assets/logo.svg";
     background-repeat: no-repeat;
   }
 </style>
+
+<script is:inline data-astro-rerun>
+  document.getElementById("footer-year").innerText = new Date().getFullYear();
+</script>

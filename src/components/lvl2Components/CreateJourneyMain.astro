@@ -1,5 +1,10 @@
 ---
 // src/components/CreativeJourney.astro
+import { Image } from "astro:assets";
+import cryptocademyImg from "../../assets/app-showcase/Cryptocademy-showcase.png";
+import GestureAcademyImg from "../../assets/app-showcase/GestureAcademy-showcase.png";
+import Workoutwiki from "../../assets/app-showcase/Workoutwiki-showcase.png";
+import menyouai from "../../assets/app-showcase/me-n-you-teaser.png";
 ---
 
 <style>
@@ -30,15 +35,35 @@
   .project-card:hover::before {
     opacity: 1;
   }
+
+  .gradient-text {
+    /* The gradient background */
+    background-image: linear-gradient(360deg, #1a2a4c, #5676c9d1, white 40%);
+
+    /* Clip the background to the text */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* Make the text color transparent */
+    -webkit-text-fill-color: transparent;
+
+    /* Ensures the gradient covers the text properly */
+    background-size: 100% 100%;
+  }
 </style>
 
 <div class="min-h-screen text-white p-4 sm:p-6 md:p-8 mt-[100px]">
   <div class="max-w-7xl mx-auto">
     <!-- Header Section -->
     <header class="mb-8 md:mb-12">
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold mb-4">
-        My Creative Journey
+      <p class="text-blue-400 font-mono text-sm mb-2">[03] — Our Projects</p>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 gradient-text">
+        Turing Ideas Into Impactful Solutions!
       </h1>
+      <p class="text-xl pt-4 text-gray-300">
+        Every project tells a story of innovation, precision, and measurable
+        growth.
+      </p>
       <!-- <button
         class="bg-green-500/20 text-green-300 border border-green-400/50 rounded-full px-5 py-2 text-sm font-medium flex items-center gap-2 hover:bg-green-500/30 transition-all duration-300 group"
       >
@@ -61,74 +86,97 @@
 
     <!-- Grid Layout for Projects -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Project 1: Google VEO 3 (Spans 2 columns) -->
+      <!-- Project 1:  (Spans 2 columns) -->
       <div
         class="project-card relative md:col-span-2 p-4 rounded-lg border border-gray-800/50 flex flex-col transition-transform duration-300 hover:scale-[0.98]"
       >
-        <div class="mb-4">
-          <p class="text-xs text-gray-400">VC/Generative AI | VISION</p>
-          <h2 class="text-xl font-semibold mt-1">
-            Google VEO 3 - The Day the Jungle Stood Together
-          </h2>
-          <p class="text-sm text-gray-500">Video Production</p>
-        </div>
-        <div class="flex-grow bg-gray-700 rounded-md w-full aspect-video">
-          <!-- Placeholder for image -->
-        </div>
+        <a href="/projects/cryptocademy-app" class="z-50">
+          <div class="mb-4">
+            <p class="text-xs text-gray-400">Mobile App Development</p>
+            <h2 class="text-xl font-semibold mt-1">
+              Cryptocademy crossed 20k signups on Android!
+            </h2>
+          </div>
+          <div class="flex-grow rounded-md w-full aspect-video">
+            <!-- Placeholder for image -->
+            <Image src={cryptocademyImg} alt="Cryptocademy" class="" />
+          </div>
+        </a>
       </div>
 
       <!-- Project 2: Riding the Wave -->
       <div
         class="project-card relative p-4 rounded-lg border border-gray-800/50 flex flex-col transition-transform duration-300 hover:scale-[0.98]"
       >
-        <div class="mb-4">
-          <p class="text-xs text-gray-400">Growth/Design | VISION</p>
-          <h2 class="text-xl font-semibold mt-1">
-            Riding the Wave at Dreamforce 2024!
-          </h2>
-          <p class="text-sm text-gray-500">Video Marketing</p>
-        </div>
-        <div class="flex-grow bg-gray-700 rounded-md w-full aspect-video">
-          <!-- Placeholder for image -->
-        </div>
+        <a href="/projects/me-n-you-app" class="z-50">
+          <div class="mb-4">
+            <p class="text-xs text-gray-400">Generative AI</p>
+            <h2 class="text-xl font-semibold mt-1">
+              Webdrip is working on it's local first AI Companion App! Set to
+              release on 2025
+            </h2>
+          </div>
+          <div class="flex-grow rounded-md w-full aspect-video">
+            <!-- Placeholder for image -->
+            <Image
+              src={menyouai}
+              alt="menyou ai companion teaser"
+              class="object-contain"
+            />
+          </div>
+        </a>
+      </div>
+
+      <!-- Project 4 -->
+      <div
+        class="project-card relative p-4 rounded-lg border border-gray-800/50 flex flex-col transition-transform duration-300 hover:scale-[0.98]"
+      >
+        <a href="/projects/workout-wiki-app" class="z-50">
+          <div class="mb-4">
+            <p class="text-xs text-gray-400">Mobile App | VISION</p>
+            <h2 class="text-xl font-semibold mt-1">
+              Workout Wiki - 1200+ Exercises
+            </h2>
+          </div>
+          <div class="flex-grow rounded-md w-full aspect-video">
+            <!-- Placeholder for image -->
+            <Image
+              src={Workoutwiki}
+              alt="Workout Wiki App - Webdrip"
+              class="object-contain"
+            />
+          </div>
+        </a>
       </div>
 
       <!-- Project 3: Omelo -->
       <div
         class="project-card relative p-4 rounded-lg border border-gray-800/50 flex flex-col transition-transform duration-300 hover:scale-[0.98]"
       >
-        <div class="mb-4">
-          <p class="text-xs text-gray-400">Mobile App | VISION</p>
-          <h2 class="text-xl font-semibold mt-1">
-            Omelo - India's AI Pet-Health App
-          </h2>
-        </div>
-        <div class="flex-grow bg-gray-700 rounded-md w-full aspect-video">
-          <!-- Placeholder for image -->
-        </div>
-      </div>
-
-      <!-- Project 4: HCL -->
-      <div
-        class="project-card relative p-4 rounded-lg border border-gray-800/50 flex flex-col transition-transform duration-300 hover:scale-[0.98]"
-      >
-        <div class="mb-4">
-          <p class="text-xs text-gray-400">B2B Tech | VISION</p>
-          <h2 class="text-xl font-semibold mt-1">
-            HCL - Advantage Pega Experience Amplifier Solution (Explainer Video)
-          </h2>
-          <p class="text-sm text-gray-500">Video Production</p>
-        </div>
-        <div class="flex-grow bg-gray-700 rounded-md w-full aspect-video">
-          <!-- Placeholder for image -->
-        </div>
+        <a href="/projects/signlanguage-app" class="z-50">
+          <div class="mb-4">
+            <p class="text-xs text-gray-400">Mobile App | VISION</p>
+            <h2 class="text-xl font-semibold mt-1">
+              SignLanguage: Learn ASL Practically
+            </h2>
+          </div>
+          <div class="flex-grow rounded-md w-full aspect-video">
+            <!-- Placeholder for image -->
+            <Image
+              src={GestureAcademyImg}
+              alt="GestureAcademy App"
+              class="object-contain"
+            />
+          </div>
+        </a>
       </div>
 
       <!-- View All Projects Card -->
-      <div
+      <a
+        href="/projects"
         class="bg-main text-white p-6 rounded-lg flex items-center justify-center aspect-video md:aspect-auto transition-transform duration-300 hover:scale-[0.98]"
       >
-        <a href="#" class="flex items-center gap-2 font-semibold text-2xl">
+        <div class="flex items-center gap-2 font-semibold text-2xl">
           View all projects
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -142,8 +190,8 @@
               d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"
             ></path>
           </svg>
-        </a>
-      </div>
+        </div>
+      </a>
     </div>
   </div>
 </div>

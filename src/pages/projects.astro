@@ -1,0 +1,135 @@
+---
+// src/components/SelectedWork.astro
+
+import Layout from "../layouts/Layout.astro"
+import Navbar from "../components/lvl2Components/Navbar.astro";
+import ScrollingText from "../components/lvl1Components/ScrollingText.astro";
+import Footer from "../components/lvl2Components/Footer.astro";
+import { Icon } from 'astro-icon/components';
+
+import { getCollection} from 'astro:content';
+
+const allBlogPosts = await getCollection('posts');
+
+// console.log(allBlogPosts)
+
+
+
+const clientStats = [
+  "5+ years of experience",
+  "> 95% / client retention rate",
+  "100+ / satisfied clients",
+  // "250+ / projects finished",
+];
+// Data for the project cards.
+// The 'icon' property now holds the name for astro-icon to use.
+const projects = [
+  {
+    "category": "Mobile App Development",
+    "date": "Jul 20, 2024",
+    "title": "Cryptocademy crossed 20k signups on Android!",
+    "description": "A risk-free paper crypto trading app helping users master trading concepts. Gained over 20,000+ signups on Android & iOS.",
+    "icon": null,
+    "url": "/src/assets/app-showcase/Cryptocademy-showcase.png",
+    "aspectRatio": "aspect-video"
+  },
+  {
+    "category": "Generative AI",
+    "date": "Jul 20, 2024",
+    "title": "Webdrip's local-first AI Companion app coming in 2025",
+    "description": "Webdrip is building a privacy-first generative AI assistant that runs locally. Set to release in 2025.",
+    "icon": null,
+    "url": "/src/assets/app-showcase/GestureAcademy-showcase.png",
+    "aspectRatio": "aspect-video"
+  },
+  {
+    "category": "Mobile App | VISION",
+    "date": "Jul 20, 2024",
+    "title": "Workout Wiki - 1200+ Exercises",
+    "description": "A mobile app designed to explore and learn 1200+ exercises with instructions and visuals to aid gym routines.",
+    "icon": null,
+    "url": "/src/assets/app-showcase/Workoutwiki-showcase.png",
+    "aspectRatio": "aspect-video"
+  },
+  {
+    "category": "Mobile App | VISION",
+    "date": "Jul 20, 2024",
+    "title": "SignLanguage: Learn ASL Practically",
+    "description": "GestureAcademy is an app that teaches American Sign Language (ASL) through interactive and practical methods.",
+    "icon": null,
+    "url": "/src/assets/app-showcase/me-n-you-teaser.png",
+    "aspectRatio": "aspect-video"
+  }
+]
+---
+
+
+<Layout>
+<Navbar />
+<section class=" py-20 sm:py-24">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16 sm:mb-20">
+      <p class="text-base font-semibold leading-6 text-blue-400">
+        <span class="inline-block h-2 w-2 rounded-full bg-blue-600 mr-2"></span>
+        My recent projects
+      </p>
+      <h1 class="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        Selected work
+      </h1>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="space-y-20">
+     {
+      allBlogPosts.map(project => (
+          <a href={`/projects/${project.data.slug}`}>
+        <article class="flex flex-col">
+          <!-- Image Placeholder -->
+          <div class={`w-full  flex justify-center  rounded-2xl `}>
+            <img src={project.data.coverImage} alt="Project Image" class="max-h-[500px] " />
+          </div>
+
+          <!-- Content -->
+          <div class="mt-6">
+            <div class="flex items-start justify-between gap-x-6">
+              <div class="flex-1">
+                <!-- Metadata -->
+                <div class="flex items-center gap-x-3 text-sm font-medium text-slate-300">
+                  <span>{project.data.tags}</span>
+                  {/* <time>{project.date}</time> */}
+                </div>
+                <!-- Title & Description with clickable area -->
+                <div class="group relative mt-2">
+                  <h2 class="text-2xl font-bold text-white group-hover:text-slate-50 transition-colors">
+                      <span class="absolute inset-0 z-10"></span>
+                      {project.data.title}
+                  </h2>
+                  <p class="mt-2 text-base text-slate-100">{project.data.description}</p>
+                </div>
+              </div>
+              <a
+                class="relative z-20 hidden sm:inline-block flex-shrink-0 px-4 py-1.5 text-sm font-semibold text-white bg-slate-900 rounded-full hover:bg-slate-800 transition-colors"
+              >
+                Learn more
+              </a>
+            </div>
+          </div>
+        </article>
+          </a>
+
+      ))
+     } 
+    </div>
+
+
+   
+  </div>
+</section>
+
+  <div class="">
+    <ScrollingText items={clientStats} speed="normal" className="py-4" />
+  </div>
+  <Footer />
+    
+</Layout>

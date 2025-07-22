@@ -1,19 +1,21 @@
 ---
-// Navbar.astro
+// I've re-added the SVG icons for a complete component.
+// You can replace these with your preferred icon library or SVGs.
 import Logo from "../../assets/logo.svg";
 ---
 
-<nav class="z-50 relative">
+<header class="z-50 relative">
   <!-- desktop navbar -->
-  <div class="flex justify-between max-w-[1300px] mx-auto">
+  <div
+    class="flex justify-between items-center max-w-[1300px] mx-auto px-4 lg:px-0"
+  >
     <!-- Logo -->
-    <div class="flex items-center">
+    <a href="/" aria-label="Homepage">
       <Logo class="w-60 h-20" />
-    </div>
+    </a>
 
     <!-- Center Section - Desktop only -->
     <div class="hidden lg:flex items-center space-x-2">
-      <!-- Navigation -->
       <nav class="flex items-center bg-background px-4 py-2 text-white">
         <a
           href="/"
@@ -22,25 +24,25 @@ import Logo from "../../assets/logo.svg";
           <span class="nav-text">Home</span>
         </a>
         <a
-          href="/work"
+          href="/projects"
           class="nav-link px-4 py-2 text-lg font-medium transition-all duration-300 hover:text-blue-400 relative overflow-hidden"
         >
-          <span class="nav-text">Work</span>
+          <span class="nav-text">Projects</span>
         </a>
         <a
-          href="/services"
+          href="#services"
           class="nav-link px-4 py-2 text-lg font-medium transition-all duration-300 hover:text-blue-400 relative overflow-hidden"
         >
           <span class="nav-text">Services</span>
         </a>
         <a
-          href="/approach"
+          href="#approach"
           class="nav-link px-4 py-2 text-lg font-medium transition-all duration-300 hover:text-blue-400 relative overflow-hidden"
         >
           <span class="nav-text">Approach</span>
         </a>
         <a
-          href="/about"
+          href="#about"
           class="nav-link px-4 py-2 text-lg font-medium transition-all duration-300 hover:text-blue-400 relative overflow-hidden"
         >
           <span class="nav-text">About</span>
@@ -54,21 +56,16 @@ import Logo from "../../assets/logo.svg";
       </nav>
     </div>
 
-    <!-- Right Section -->
+    <!-- Hamburger Menu Button - Mobile/Tablet only -->
     <div class="lg:hidden flex items-center">
-      <!-- <a
-        href="/contact"
-        class="px-4 py-2 text-lg font-medium transition-colors hover:/80 text-white"
-      >
-        Email us
-      </a> -->
-
       <button
         id="mobile-menu-button"
         class="p-2 text-white hover:bg-white/10 rounded-md transition-colors"
+        aria-label="Open menu"
+        aria-expanded="false"
       >
         <svg
-          class="h-5 w-5"
+          class="h-6 w-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -79,23 +76,137 @@ import Logo from "../../assets/logo.svg";
             stroke-width="2"
             d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
-        <span class="sr-only">Toggle menu</span>
       </button>
     </div>
   </div>
-</nav>
+
+  <!-- Mobile Menu Overlay with Animation -->
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 bg-black/90 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out"
+  >
+    <!-- Panel for content animation -->
+    <div
+      id="mobile-menu-panel"
+      class="relative w-full h-full flex flex-col justify-between py-20 px-6 transform scale-95 transition-all duration-300 ease-in-out"
+    >
+      <!-- Close Button -->
+      <button
+        id="close-menu-button"
+        class="absolute top-7 right-5 p-2 text-gray-400 hover:text-white transition-colors"
+        aria-label="Close menu"
+      >
+        <svg
+          class="h-8 w-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Main Navigation -->
+      <nav class="flex flex-col items-start space-y-4">
+        <a href="/" class="text-4xl font-thin text-gray-300 hover:text-white"
+          >Home</a
+        >
+        <a
+          href="/about"
+          class="text-4xl font-thin text-gray-300 hover:text-white">About</a
+        >
+        <a
+          href="/cases"
+          class="text-4xl font-thin text-gray-300 hover:text-white">Cases</a
+        >
+        <div class="flex items-center space-x-4">
+          <a
+            href="/vacancies"
+            class="text-4xl font-thin text-gray-300 hover:text-white"
+            >Vacancies</a
+          >
+          <span
+            class="text-xs border border-gray-500 rounded-full px-3 py-1 mt-1 text-gray-300"
+            >We're Hiring!</span
+          >
+        </div>
+        <a
+          href="/services"
+          class="text-4xl font-thin text-gray-300 hover:text-white">Services</a
+        >
+        <a
+          href="/contact"
+          class="text-4xl font-thin text-gray-300 hover:text-white">Contact</a
+        >
+      </nav>
+
+      <!-- Bottom Section -->
+      <div>
+        <!-- Secondary Links -->
+        <div class="border-t border-gray-700 pt-6">
+          <nav class="flex flex-col items-start space-y-3">
+            <a href="/terms" class="text-md text-gray-400 hover:text-white"
+              >Terms of Service</a
+            >
+            <a href="/help" class="text-md text-gray-400 hover:text-white"
+              >Help center</a
+            >
+            <a href="/blog" class="text-md text-gray-400 hover:text-white"
+              >Blog</a
+            >
+          </nav>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="flex space-x-3 mt-8 text-gray-400">
+          <a
+            href="#"
+            class="p-3 border border-gray-700 rounded-lg hover:border-white hover:text-white transition-colors"
+            aria-label="Telegram"
+          >
+            <!-- <TelegramIcon /> -->
+          </a>
+          <a
+            href="#"
+            class="p-3 border border-gray-700 rounded-lg hover:border-white hover:text-white transition-colors"
+            aria-label="Email"
+          >
+            <!-- <EmailIcon /> -->
+          </a>
+          <a
+            href="#"
+            class="p-3 border border-gray-700 rounded-lg hover:border-white hover:text-white transition-colors"
+            aria-label="WhatsApp"
+          >
+            <!-- <WhatsAppIcon /> -->
+          </a>
+          <a
+            href="#"
+            class="p-3 border border-gray-700 rounded-lg hover:border-white hover:text-white transition-colors"
+            aria-label="Instagram"
+          >
+            <!-- <InstagramIcon /> -->
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
 <style>
+  /* Your existing desktop nav-link styles */
   .nav-link {
     position: relative;
     display: inline-block;
   }
-
   .nav-text {
     display: inline-block;
     transition: transform 0.3s ease;
   }
-
   .nav-link::before {
     content: "(" attr(data-text) ")";
     position: absolute;
@@ -111,21 +222,18 @@ import Logo from "../../assets/logo.svg";
     transition: transform 0.3s ease;
     padding: 0.5rem 1rem;
   }
-
   .nav-link:hover .nav-text {
     transform: translateY(-100%);
   }
-
   .nav-link:hover::before {
     transform: translateY(0);
   }
-
   /* Set data attributes for the pseudo-element content */
   .nav-link:nth-child(1)::before {
     content: "(Home)";
   }
   .nav-link:nth-child(2)::before {
-    content: "(Work)";
+    content: "(Projects)";
   }
   .nav-link:nth-child(3)::before {
     content: "(Services)";
@@ -140,3 +248,43 @@ import Logo from "../../assets/logo.svg";
     content: "(Contact)";
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const closeMenuButton = document.getElementById("close-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileMenuPanel = document.getElementById("mobile-menu-panel");
+
+    const openMenu = () => {
+      if (!mobileMenu || !mobileMenuPanel) return;
+
+      // Make the menu visible
+      mobileMenu.classList.remove("opacity-0", "pointer-events-none");
+      // Start the animation for the content panel
+      mobileMenuPanel.classList.remove("scale-95");
+
+      mobileMenuButton.setAttribute("aria-expanded", "true");
+    };
+
+    const closeMenu = () => {
+      if (!mobileMenu || !mobileMenuPanel) return;
+
+      // Start the closing animation
+      mobileMenu.classList.add("opacity-0");
+      mobileMenuPanel.classList.add("scale-95");
+
+      // After the animation finishes, make it non-interactive
+      setTimeout(() => {
+        mobileMenu.classList.add("pointer-events-none");
+      }, 300); // This should match the transition duration
+
+      mobileMenuButton.setAttribute("aria-expanded", "false");
+    };
+
+    if (mobileMenuButton && closeMenuButton) {
+      mobileMenuButton.addEventListener("click", openMenu);
+      closeMenuButton.addEventListener("click", closeMenu);
+    }
+  });
+</script>

@@ -3,42 +3,121 @@
 
 // Helper function to define the process steps data.
 // This makes the template cleaner and easier to manage.
-const processSteps = [
+const processSteps =
+[
   {
-    id: '01',
-    tag: 'Discovery',
-    title: "I'll dive deep into your story, vision, and message.",
-    duration: '1-3 days',
-    details: [
-      { point: 'Initial Consultation', description: 'Understand the project goals, target audience, platforms, and key message.' },
-      { point: 'Creative Briefing', description: 'Gather brand assets, references, and technical specifications.' },
-      { point: 'Concept Exploration', description: 'Research visual direction, style inspiration, and tone.' },
-    ],
+    "id": "01",
+    "tag": "Discovery & Strategy",
+    "title": "We build a winning strategy by aligning on your vision.",
+    "duration": "1-2 Weeks",
+    "details": [
+      {
+        "point": "Project Goal & KPI Definition",
+        "description": "We dive deep into your business goals, target audience, and success metrics for your project in Mumbai."
+      },
+      {
+        "point": "Market & Competitor Insights",
+        "description": "We analyze market trends and your competition to position your brand for maximum digital impact."
+      },
+      {
+        "point": "AI & Automation Audit",
+        "description": "For AI projects, we assess your data and processes to uncover high-impact automation opportunities."
+      },
+      {
+        "point": "Scope & Technology Roadmap",
+        "description": "You receive a clear proposal with the project scope, tech stack, timeline, and transparent pricing."
+      }
+    ]
   },
   {
-    id: '02',
-    tag: 'Design & Storyboarding',
-    title: "I'll map out the visual story and start shaping the style.",
-    duration: '3-5 days',
-    details: [
-        { point: 'Script & Voiceover (if needed)', description: 'Write or refine the script, confirm voiceover talent and tone.' },
-        { point: 'Storyboard & Styleframes', description: 'Sketch out scenes, camera moves, and transitions with design.' },
-        { point: 'Design Exploration', description: 'Develop frames with visual style, typography, and mood.' },
-        { point: 'Client Review', description: 'Review storyboards and styleframes for approval.' },
-    ],
+    "id": "02",
+    "tag": "UI/UX Design",
+    "title": "We design user-centric experiences that captivate and convert.",
+    "duration": "2-3 Weeks",
+    "details": [
+      {
+        "point": "UX Flow & Information Architecture",
+        "description": "We map user journeys and structure your platform for intuitive navigation and a seamless user experience."
+      },
+      {
+        "point": "Wireframing & UI Design",
+        "description": "From clean wireframes to pixel-perfect UI mockups, we create a design that embodies your brand."
+      },
+      {
+        "point": "Clickable & Interactive Prototypes",
+        "description": "Experience your app or website firsthand with an interactive prototype to refine functionality before development."
+      },
+      {
+        "point": "Design Review & Approval",
+        "description": "We collaborate closely, iterating on the design based on your feedback to ensure perfect alignment."
+      }
+    ]
   },
   {
-    id: '03',
-    tag: 'Animation & Production',
-    title: 'Time to bring the visuals to life with movement, rhythm, and finesse.',
-    duration: '5-10 days',
-    details: [
-      { point: 'Scene Animation', description: 'Animate sequences using After Effects, Blender, or other tools.' },
-      { point: 'Sound Design', description: 'Add music, sound effects, and sync voiceover.' },
-      { point: 'Client Check-ins', description: 'Share work-in-progress drafts for early feedback.' },
-    ],
+    "id": "03",
+    "tag": "Agile Development",
+    "title": "We build robust digital solutions with clean code and precision.",
+    "duration": "4-10 Weeks",
+    "details": [
+      {
+        "point": "Agile Sprints & Build Cycles",
+        "description": "Your project is built in two-week 'sprints,' with functional updates delivered regularly for your review."
+      },
+      {
+        "point": "Full-Stack Development",
+        "description": "Our Mumbai-based developers craft clean code for both the user-facing front end and the powerful back end."
+      },
+      {
+        "point": "Rigorous QA Testing",
+        "description": "We integrate continuous quality assurance and testing to deliver a bug-free, high-performance product."
+      },
+      {
+        "point": "Transparent Communication",
+        "description": "Stay fully informed with regular progress reports and direct access to our expert development team."
+      }
+    ]
   },
-];
+  {
+    "id": "04",
+    "tag": "Launch",
+    "title": "We execute a flawless launch for your website or mobile app.",
+    "duration": "1 Week",
+    "details": [
+      {
+        "point": "Pre-Launch Optimization",
+        "description": "We conduct final performance, security, and load testing to guarantee a smooth and successful launch."
+      },
+      {
+        "point": "Seamless Deployment",
+        "description": "We manage the entire process, from server setup to deploying on the web or publishing in app stores."
+      },
+      {
+        "point": "Post-Launch Monitoring",
+        "description": "Our team monitors your platform closely after it goes live to ensure stability and optimal performance."
+      }
+    ]
+  },
+  {
+    "id": "05",
+    "tag": "Scale & Grow",
+    "title": "We are your long-term partner for continuous growth and innovation.",
+    "duration": "Ongoing",
+    "details": [
+      {
+        "point": "Website & App Maintenance",
+        "description": "Our support packages keep your digital assets secure, updated, and performing at peak efficiency."
+      },
+      {
+        "point": "Data-Driven Growth Insights",
+        "description": "We track user analytics and KPIs, providing actionable insights for continuous improvement and ROI."
+      },
+      {
+        "point": "Future-Ready Scaling",
+        "description": "We partner with you to scale your platform, adding new features and AI enhancements as your business evolves."
+      }
+    ]
+  }
+]
 ---
 
 <style>
@@ -48,11 +127,11 @@ const processSteps = [
     }
 </style>
 
-<div class="how-it-works-container text-white p-4 sm:p-6 md:p-8 mt-[100px]">
+<section id="approach" class="how-it-works-container text-white p-4 sm:p-6 md:p-8 mt-[100px]">
   <div class="max-w-7xl mx-auto">
     <!-- Component Header -->
     <header class="mb-12 md:mb-16">
-      <p class="text-blue-400 font-semibold font-stretch-150% text-sm mb-2">[03] — Process</p>
+      <p class="text-blue-400 font-semibold font-stretch-150% text-sm mb-2">[04] — Process</p>
       <h2 class="text-5xl md:text-6xl font-semibold">How it works</h2>
     </header>
 
@@ -97,4 +176,4 @@ const processSteps = [
       ))}
     </div>
   </div>
-</div>
+</section>

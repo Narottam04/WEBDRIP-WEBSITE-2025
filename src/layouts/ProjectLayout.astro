@@ -1,0 +1,69 @@
+---
+import Footer from "../components/lvl2Components/Footer.astro";
+import Navbar from "../components/lvl2Components/Navbar.astro";
+import Layout from "./Layout.astro";
+
+const { tags, category, client, title, description, coverImg, slug } =
+  Astro.props;
+---
+
+<Layout>
+  <Navbar />
+
+  <div class="min-h-screen" style="background-color: #0D1019;">
+    <div class="max-w-6xl mx-auto px-6 py-12">
+      <!-- Main Content Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12">
+        <!-- Left Sidebar -->
+        <div class="space-y-8 lg:sticky top-8 self-start">
+          <div>
+            <h3 class="text-sm font-medium text-gray-400 mb-2">Category</h3>
+            <p class="text-white">{tags}</p>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-medium text-gray-400 mb-2">Client</h3>
+            <p class="text-white">{client}</p>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="space-y-8">
+          <!-- Title -->
+          <h1
+            class="text-4xl lg:text-5xl font-semibold text-white leading-tight"
+          >
+            {title}
+          </h1>
+
+          <!-- Description -->
+          <p class="text-gray-300 text-lg leading-relaxed">
+            {description}
+          </p>
+
+          <!-- Featured Image -->
+          <div class="w-full">
+            <img
+              src={coverImg}
+              alt="Animated jungle scene with various animals including elephants, lions, and other creatures in a lush forest setting"
+              width="800"
+              height="450"
+              class="w-full h-auto rounded-lg"
+            />
+          </div>
+
+          <!-- Process Details -->
+          <main
+            class="prose dark:prose-invert
+  prose-h1:font-bold prose-h1:text-xl
+  prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl"
+          >
+            <slot />
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<Footer />

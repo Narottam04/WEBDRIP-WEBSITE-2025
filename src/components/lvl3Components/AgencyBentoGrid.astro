@@ -1,0 +1,873 @@
+---
+// src/components/AgencyBentoGrid.astro
+import Code from "@lucide/astro/icons/code";
+import Smartphone from "@lucide/astro/icons/smartphone";
+import Cloud from "@lucide/astro/icons/cloud";
+import Users from "@lucide/astro/icons/users";
+import Wrench from "@lucide/astro/icons/wrench";
+import Handshake from "@lucide/astro/icons/handshake";
+import ChevronRight from "@lucide/astro/icons/chevron-right";
+import Zap from "@lucide/astro/icons/zap";
+import Database from "@lucide/astro/icons/database";
+import Cpu from "@lucide/astro/icons/cpu";
+import ArrowRight from "@lucide/astro/icons/arrow-right";
+import BrainCircuit from "@lucide/astro/icons/brain-circuit";
+// import BarChart3 from "@lucide/astro/icons/bar-chart-3";
+import Sparkles from "@lucide/astro/icons/sparkles";
+import Bell from "@lucide/astro/icons/bell";
+import Heart from "@lucide/astro/icons/heart";
+import MessageCircle from "@lucide/astro/icons/message-circle";
+import Share2 from "@lucide/astro/icons/share-2";
+import Play from "@lucide/astro/icons/play";
+import Settings from "@lucide/astro/icons/settings";
+import Camera from "@lucide/astro/icons/camera";
+import Mic from "@lucide/astro/icons/mic";
+import Video from "@lucide/astro/icons/video";
+import Activity from "@lucide/astro/icons/activity";
+import TrendingUp from "@lucide/astro/icons/trending-up";
+import Eye from "@lucide/astro/icons/eye";
+import Brain from "@lucide/astro/icons/brain";
+import Workflow from "@lucide/astro/icons/workflow";
+---
+
+<style>
+  /*
+    This style block contains the more complex CSS for the hover animations,
+    including the animated gradient border effect for the project cards.
+  */
+  .project-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0.5rem; /* Matches the card's rounded corners */
+    border: 2px solid transparent;
+    /* Changed to your new linear-gradient */
+    background: linear-gradient(360deg, #1a2a4c, #5676c9d1, white) border-box;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) padding-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .project-card:hover::before {
+    opacity: 1;
+  }
+
+  .gradient-text {
+    /* The gradient background */
+    background-image: linear-gradient(360deg, #1a2a4c, #5676c9d1, white 40%);
+
+    /* Clip the background to the text */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* Make the text color transparent */
+    -webkit-text-fill-color: transparent;
+
+    /* Ensures the gradient covers the text properly */
+    background-size: 100% 100%;
+  }
+</style>
+
+<section id="services">
+  <div class="max-w-7xl mx-auto mb-20">
+    <p class="text-blue-400 font-mono text-sm mb-2">[01] — Services</p>
+    <h1 class="text-4xl gradient-text sm:text-5xl md:text-6xl font-semibold">
+      We handle just about everything!
+    </h1>
+    <p class="text-xl pt-4 text-gray-300">
+      Complete digital solutions under one roof. Fast, reliable, results-driven.
+    </p>
+  </div>
+  <div class="flex flex-col gap-6 max-w-7xl mx-auto">
+    <!-- First Row - 2 columns -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Website Design & Development -->
+      <div
+        class="project-card p-6 relative overflow-hidden group cursor-pointer transition-all duration-300 h-[500px] rounded-lg"
+      >
+        <div class="absolute inset-0"></div>
+        <div class="relative z-10 h-full flex flex-col">
+          <!-- <div
+          class="bg-gradient-to-r from-blue-500 to-purple-500 rounded-full w-12 h-12 flex items-center justify-center mb-4"
+        >
+          <Code class="text-white h-6 w-6" />
+        </div> -->
+          <h2 class="text-2xl font-bold mb-3 text-white">
+            Website Design & Development
+          </h2>
+          <p class="text-gray-400 mb-6">
+            Crafting pixel-perfect, lightning-fast websites that convert
+            visitors into customers. From landing pages to complex web
+            applications.
+          </p>
+
+          <!-- Mock browser window -->
+          <div
+            class="bg-[#0D1019] border border-[#2A2F42] rounded-lg shadow-lg overflow-hidden flex-grow"
+          >
+            <div class="bg-[#1A1D2E] px-4 py-2 flex items-center gap-2">
+              <div class="flex gap-1">
+                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+              </div>
+              <div
+                class="bg-[#0D1019] rounded px-3 py-1 text-xs text-gray-400 ml-2"
+              >
+                webdrip.in
+              </div>
+            </div>
+            <div
+              class="p-4 bg-gradient-to-r from-[#161927]/80 to-[#1E2235]/80 h-full flex flex-col"
+            >
+              <div class="text-sm font-medium mb-2 text-blue-400">
+                Modern. Fast. Responsive.
+              </div>
+              <div class="flex gap-2 mb-4">
+                <div class="bg-blue-500 text-white text-xs px-3 py-1 rounded">
+                  Get Started
+                </div>
+                <div
+                  class="border border-[#2A2F42] text-gray-300 text-xs px-3 py-1 rounded"
+                >
+                  Learn More
+                </div>
+              </div>
+              <div class="flex-grow flex flex-col gap-2">
+                <div class="h-3 bg-[#2A2F42]/50 rounded w-full"></div>
+                <div class="h-3 bg-[#2A2F42]/50 rounded w-3/4"></div>
+                <div class="h-3 bg-[#2A2F42]/50 rounded w-1/2"></div>
+                <div class="mt-4 flex gap-2">
+                  <div class="h-8 w-8 rounded bg-blue-500/20"></div>
+                  <div class="h-8 w-8 rounded bg-purple-500/20"></div>
+                  <div class="h-8 w-8 rounded bg-green-500/20"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-4">
+            <div
+              class="bg-blue-500/10 text-blue-400 border-blue-500/20 border rounded-full px-3 py-1 text-sm"
+            >
+              React
+            </div>
+            <div
+              class="bg-green-500/10 text-green-400 border-green-500/20 border rounded-full px-3 py-1 text-sm"
+            >
+              Next.js
+            </div>
+            <div
+              class="bg-purple-500/10 text-purple-400 border-purple-500/20 border rounded-full px-3 py-1 text-sm"
+            >
+              Astro Js
+            </div>
+            <div
+              class="bg-orange-500/10 text-orange-400 border-orange-500/20 border rounded-full px-3 py-1 text-sm"
+            >
+              Tailwind
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Mobile App Development - FIXED CONNECTING LINES -->
+      <div
+        class="project-card p-6 relative group transition-all duration-300 overflow-hidden h-[500px] rounded-lg"
+      >
+        <div
+          class="absolute top-0 right-0 w-64 h-64 bg-green-500/5 rounded-full blur-3xl"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 left-0 w-48 h-48 bg-teal-500/5 rounded-full blur-2xl"
+        >
+        </div>
+        <div class="relative z-10 h-full flex flex-col">
+          <!-- <div
+          class="bg-gradient-to-r from-green-500 to-teal-500 rounded-full w-12 h-12 flex items-center justify-center mb-4"
+        >
+          <Smartphone class="text-white h-6 w-6" />
+
+        </div> -->
+          <!-- Platform indicators - ENHANCED -->
+          <!-- <div class="flex gap-4 mb=">
+          <div
+            class="bg-[#0D1019] rounded-full px-4 py-2 border border-[#2A2F42] flex items-center gap-2"
+          >
+            <div
+              class="w-5 h-5 rounded-full bg-gradient-to-r from-green-400 to-green-500 flex items-center justify-center"
+            >
+              <span class="text-black text-xs font-bold">i</span>
+            </div>
+            <span class="text-green-400 text-sm font-medium">iOS</span>
+          </div>
+
+          <div
+            class="bg-[#0D1019] rounded-full px-4 py-2 border border-[#2A2F42] flex items-center gap-2"
+          >
+            <div
+              class="w-5 h-5 rounded-full bg-gradient-to-r from-teal-400 to-teal-500 flex items-center justify-center"
+            >
+              <span class="text-black text-xs font-bold">A</span>
+            </div>
+            <span class="text-teal-400 text-sm font-medium">Android</span>
+          </div>
+        </div> -->
+
+          <h2 class="text-2xl font-bold mb-3 text-white">
+            Custom Mobile App Development
+          </h2>
+          <p class="text-gray-400 mb-6">
+            Cross Platform iOS & Android apps that helps you create your MVP
+            quickly. From concept to Play Store and App Store with seamless
+            experiences.
+          </p>
+
+          <div class="flex-grow flex items-center justify-center relative">
+            <!-- Central phone mockup - ENHANCED -->
+            <div class="relative z-20">
+              <div
+                class="bg-gradient-to-b from-[#0D1019] to-[#161927] rounded-[28px] p-2 w-44 h-80 border-2 border-[#2A2F42] shadow-2xl"
+              >
+                <div
+                  class="bg-[#0D1019] rounded-[24px] w-full h-full flex flex-col overflow-hidden relative"
+                >
+                  <!-- Status bar -->
+                  <div
+                    class="bg-[#1A1D2E] h-6 flex items-center justify-between px-4 text-xs text-gray-400"
+                  >
+                    <span>9:41</span>
+                    <div class="flex items-center gap-1">
+                      <div class="w-4 h-2 border border-gray-500 rounded-sm">
+                        <div class="w-3 h-1 bg-green-400 rounded-sm"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- App content -->
+                  <div
+                    class="flex-1 bg-gradient-to-b from-green-500/10 to-teal-500/10 p-3 relative"
+                  >
+                    <!-- Header -->
+                    <div class="flex items-center justify-between mb-4">
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-8 h-8 rounded-full bg-green-500/30 flex items-center justify-center"
+                        >
+                          <Zap class="h-4 w-4 text-green-300" />
+                        </div>
+                        <div>
+                          <div class="w-16 h-2 bg-white/30 rounded mb-1"></div>
+                          <div class="w-12 h-1 bg-white/20 rounded"></div>
+                        </div>
+                      </div>
+                      <Bell class="h-4 w-4 text-gray-400" />
+                    </div>
+
+                    <!-- Stats cards -->
+                    <div class="grid grid-cols-2 gap-2 mb-4">
+                      <div
+                        class="bg-[#0D1019]/60 rounded-lg p-2 border border-green-500/20"
+                      >
+                        <TrendingUp class="h-3 w-3 text-green-400 mb-1" />
+                        <div class="w-8 h-1 bg-green-400/60 rounded"></div>
+                      </div>
+                      <div
+                        class="bg-[#0D1019]/60 rounded-lg p-2 border border-teal-500/20"
+                      >
+                        <Activity class="h-3 w-3 text-teal-400 mb-1" />
+                        <div class="w-6 h-1 bg-teal-400/60 rounded"></div>
+                      </div>
+                    </div>
+
+                    <!-- Content area -->
+                    <div class="space-y-2 mb-4">
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-6 h-6 rounded-full bg-gradient-to-r from-green-400 to-teal-400"
+                        >
+                        </div>
+                        <div class="flex-1">
+                          <div class="w-full h-2 bg-white/20 rounded mb-1">
+                          </div>
+                          <div class="w-3/4 h-1 bg-white/10 rounded"></div>
+                        </div>
+                        <Heart class="h-3 w-3 text-red-400" />
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-6 h-6 rounded-full bg-gradient-to-r from-blue-400 to-purple-400"
+                        >
+                        </div>
+                        <div class="flex-1">
+                          <div class="w-full h-2 bg-white/20 rounded mb-1">
+                          </div>
+                          <div class="w-2/3 h-1 bg-white/10 rounded"></div>
+                        </div>
+                        <MessageCircle class="h-3 w-3 text-blue-400" />
+                      </div>
+                    </div>
+
+                    <!-- Bottom action bar -->
+                    <div
+                      class="absolute bottom-2 left-3 right-3 bg-[#0D1019]/80 rounded-full p-2 flex items-center justify-around border border-[#2A2F42]"
+                    >
+                      <Camera class="h-4 w-4 text-gray-400" />
+                      <Mic class="h-4 w-4 text-green-400" />
+                      <Play class="h-4 w-4 text-teal-400" />
+                      <Share2 class="h-4 w-4 text-gray-400" />
+                    </div>
+                  </div>
+
+                  <!-- Home indicator -->
+                  <div class="h-4 flex items-center justify-center">
+                    <div class="w-12 h-1 bg-[#2A2F42] rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating UI elements - ENHANCED -->
+            <div class="absolute w-32 -left-1 top-1/6 z-10 animate-pulse">
+              <div
+                class="bg-[#1A1D2E] rounded-xl p-3 border border-green-500/30 shadow-lg"
+              >
+                <div class="flex items-center gap-2 mb-2">
+                  <Video class="h-4 w-4 text-green-400" />
+                  <span class="text-xs text-green-400">Live Stream</span>
+                </div>
+                <div class="w-12 h-8 bg-green-500/20 rounded"></div>
+              </div>
+            </div>
+
+            <div
+              class="absolute -right-1 top-1/6 z-10 w-32 animate-pulse"
+              style="animation-delay: 1s;"
+            >
+              <div
+                class="bg-[#1A1D2E] rounded-xl p-3 border border-teal-500/30 shadow-lg"
+              >
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-xs text-teal-400">Analytics</span>
+                </div>
+                <div class="flex gap-1">
+                  <div class="w-2 h-6 bg-teal-500/40 rounded-sm"></div>
+                  <div class="w-2 h-8 bg-teal-500/60 rounded-sm"></div>
+                  <div class="w-2 h-4 bg-teal-500/30 rounded-sm"></div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="absolute -left-1 w-32 bottom-1/4 z-10 animate-pulse"
+              style="animation-delay: 2s;"
+            >
+              <div
+                class="bg-[#1A1D2E] rounded-xl p-3 border border-blue-500/30 shadow-lg"
+              >
+                <div class="flex items-center gap-2 mb-2">
+                  <Settings class="h-4 w-4 text-blue-400" />
+                  <span class="text-xs text-blue-400">Settings</span>
+                </div>
+                <div class="space-y-1">
+                  <div class="w-8 h-1 bg-blue-500/40 rounded"></div>
+                  <div class="w-6 h-1 bg-blue-500/30 rounded"></div>
+                  <div class="w-10 h-1 bg-blue-500/50 rounded"></div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="absolute -right-1 bottom-1/4 z-10 w-32 animate-pulse"
+              style="animation-delay: 3s;"
+            >
+              <div
+                class="bg-[#1A1D2E] rounded-xl p-3 border border-purple-500/30 shadow-lg"
+              >
+                <div class="flex items-center gap-2 mb-2">
+                  <Eye class="h-4 w-4 text-purple-400" />
+                  <span class="text-xs text-purple-400">Preview</span>
+                </div>
+                <div
+                  class="w-10 h-6 bg-purple-500/20 rounded border border-purple-500/40"
+                >
+                </div>
+              </div>
+            </div>
+
+            <!--  -->
+          </div>
+
+          <!-- <div class="flex flex-wrap gap-2 mt-4">
+          <div
+            class="bg-green-500/10 text-green-400 border-green-500/20 border rounded-full px-3 py-1 text-sm"
+          >
+            React Native
+          </div>
+          <div
+            class="bg-blue-500/10 text-blue-400 border-blue-500/20 border rounded-full px-3 py-1 text-sm"
+          >
+            Swift
+          </div>
+          <div
+            class="bg-teal-500/10 text-teal-400 border-teal-500/20 border rounded-full px-3 py-1 text-sm"
+          >
+            Kotlin
+          </div>
+          <div
+            class="bg-purple-500/10 text-purple-400 border-purple-500/20 border rounded-full px-3 py-1 text-sm"
+          >
+            Flutter
+          </div>
+        </div> -->
+          <!--  -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Row - 2 columns -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Custom SaaS Software Development -->
+      <div
+        class="project-card p-6 transition-all duration-300 relative overflow-hidden h-[500px] rounded-lg"
+      >
+        <div
+          class="absolute -top-20 -right-20 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"
+        >
+        </div>
+        <div class="relative z-10 h-full flex flex-col">
+          <!-- <div
+          class="bg-gradient-to-r from-purple-500 to-pink-500 rounded-full w-12 h-12 flex items-center justify-center mb-4"
+        >
+          <Cloud class="text-white h-6 w-6" />
+        </div> -->
+          <h2 class="text-2xl font-bold mb-3 text-white">
+            Custom SaaS Software Development
+          </h2>
+          <p class="text-gray-400 mb-6">
+            Scalable software solutions that grow with your business.
+            Multi-tenant, secure, and profitable.
+          </p>
+
+          <!-- SaaS Architecture Diagram -->
+          <div
+            class="bg-[#0D1019] border border-[#2A2F42] rounded-lg p-4 mb-6 flex-grow flex items-center justify-center"
+          >
+            <div class="flex flex-col items-center">
+              <div class="flex items-center justify-center gap-4 mb-4">
+                <div
+                  class="w-16 h-10 border border-purple-500/30 rounded bg-purple-500/10 flex items-center justify-center text-xs text-purple-400"
+                >
+                  User 1
+                </div>
+                <div
+                  class="w-16 h-10 border border-purple-500/30 rounded bg-purple-500/10 flex items-center justify-center text-xs text-purple-400"
+                >
+                  User 2
+                </div>
+                <div
+                  class="w-16 h-10 border border-purple-500/30 rounded bg-purple-500/10 flex items-center justify-center text-xs text-purple-400"
+                >
+                  User 3
+                </div>
+              </div>
+              <ArrowRight class="rotate-90 h-5 w-5 text-purple-500 mb-2" />
+              <div
+                class="w-40 h-10 border border-pink-500/30 rounded bg-pink-500/10 flex items-center justify-center text-xs text-pink-400 mb-4"
+              >
+                API Gateway
+              </div>
+              <div class="flex items-center justify-center gap-4">
+                <div
+                  class="w-20 h-10 border border-blue-500/30 rounded bg-blue-500/10 flex items-center justify-center text-xs text-blue-400"
+                >
+                  Service 1
+                </div>
+                <div
+                  class="w-20 h-10 border border-blue-500/30 rounded bg-blue-500/10 flex items-center justify-center text-xs text-blue-400"
+                >
+                  Service 2
+                </div>
+                <div
+                  class="w-20 h-10 border border-blue-500/30 rounded bg-blue-500/10 flex items-center justify-center text-xs text-blue-400"
+                >
+                  Service 3
+                </div>
+              </div>
+              <ArrowRight class="rotate-90 h-5 w-5 text-blue-500 my-2" />
+              <div
+                class="w-32 h-10 border border-green-500/30 rounded bg-green-500/10 flex items-center justify-center text-xs text-green-400"
+              >
+                Database
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="flex flex-wrap gap-3">
+          <div
+            class="flex items-center gap-2 text-sm bg-[#1A1D2E] px-3 py-1 rounded-full"
+          >
+            <Database class="h-4 w-4 text-blue-400" />
+            <span class="text-gray-300">Multi-tenant</span>
+          </div>
+          <div
+            class="flex items-center gap-2 text-sm bg-[#1A1D2E] px-3 py-1 rounded-full"
+          >
+            <Zap class="h-4 w-4 text-yellow-400" />
+            <span class="text-gray-300">Auto-scaling</span>
+          </div>
+          <div
+            class="flex items-center gap-2 text-sm bg-[#1A1D2E] px-3 py-1 rounded-full"
+          >
+            <Cpu class="h-4 w-4 text-green-400" />
+            <span class="text-gray-300">API-first</span>
+          </div>
+        </div> -->
+        </div>
+      </div>
+
+      <!-- AI Automation - REDESIGNED -->
+      <div
+        class="project-card p-6 transition-all duration-300 relative overflow-hidden h-[500px] rounded-lg"
+      >
+        <div
+          class="absolute -top-20 -left-20 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl"
+        >
+        </div>
+        <div
+          class="absolute -bottom-20 -right-20 w-64 h-64 bg-red-500/5 rounded-full blur-3xl"
+        >
+        </div>
+        <div class="relative z-10 h-full flex flex-col">
+          <!-- <div
+            class="bg-gradient-to-r from-orange-500 to-red-500 rounded-full w-12 h-12 flex items-center justify-center mb-4"
+          >
+            <BrainCircuit class="text-white h-6 w-6" />
+          </div> -->
+          <h2 class="text-2xl font-bold mb-3 text-white">AI Automation</h2>
+          <p class="text-gray-400 mb-6">
+            Intelligent systems that learn, adapt, and automate your business
+            processes for maximum efficiency.
+          </p>
+
+          <!-- AI Visualization - REDESIGNED LAYOUT -->
+          <div
+            class="flex-grow bg-[#0D1019] border border-[#2A2F42] rounded-lg p-4 relative overflow-hidden"
+          >
+            <!-- Step 1: Data Input Layer (Top) -->
+            <div
+              class="absolute top-4 left-4 right-4 flex justify-between items-center"
+            >
+              <div
+                class="bg-[#1A1D2E] rounded-lg px-3 py-2 border border-blue-500/30 flex items-center gap-2"
+              >
+                <Database class="h-4 w-4 text-blue-400" />
+                <span class="text-xs text-blue-400">Data Input</span>
+                <div class="flex gap-1">
+                  <div class="w-1 h-3 bg-blue-500/60 rounded-sm animate-pulse">
+                  </div>
+                  <div
+                    class="w-1 h-4 bg-blue-500/80 rounded-sm animate-pulse"
+                    style="animation-delay: 0.2s;"
+                  >
+                  </div>
+                  <div
+                    class="w-1 h-2 bg-blue-500/40 rounded-sm animate-pulse"
+                    style="animation-delay: 0.4s;"
+                  >
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-[#1A1D2E] rounded-lg px-3 py-2 border border-green-500/30 flex items-center gap-2"
+              >
+                <Activity class="h-4 w-4 text-green-400" />
+                <span class="text-xs text-green-400">Processing</span>
+                <div
+                  class="w-8 h-2 bg-green-500/20 rounded border border-green-500/40 relative overflow-hidden"
+                >
+                  <div
+                    class="absolute inset-0 bg-gradient-to-r from-transparent via-green-500/60 to-transparent animate-pulse"
+                  >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: Central AI Brain (Middle) -->
+            <div
+              class="absolute top-32 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            >
+              <div class="relative">
+                <!-- Main AI Core -->
+                <div
+                  class="w-20 h-20 rounded-full bg-gradient-to-r from-orange-500/30 to-red-500/30 border-2 border-orange-500/50 flex items-center justify-center relative"
+                >
+                  <Brain class="h-10 w-10 text-orange-400 animate-pulse" />
+
+                  <!-- Orbiting Neural Nodes -->
+                  <div
+                    class="absolute inset-0 animate-spin"
+                    style="animation-duration: 8s;"
+                  >
+                    <div
+                      class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-orange-500 rounded-full shadow-lg shadow-orange-500/50"
+                    >
+                    </div>
+                    <div
+                      class="absolute top-1/2 -right-2 transform -translate-y-1/2 w-2 h-2 bg-red-400 rounded-full shadow-lg shadow-red-400/50"
+                    >
+                    </div>
+                    <div
+                      class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-yellow-400 rounded-full shadow-lg shadow-yellow-400/50"
+                    >
+                    </div>
+                    <div
+                      class="absolute top-1/2 -left-2 transform -translate-y-1/2 w-2 h-2 bg-orange-400 rounded-full shadow-lg shadow-orange-400/50"
+                    >
+                    </div>
+                  </div>
+
+                  <!-- Inner pulse ring -->
+                  <div
+                    class="absolute inset-2 rounded-full border border-orange-400/30 animate-ping"
+                  >
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+            </div>
+
+            <!-- Step 3: Output Layer (Bottom) -->
+            <div
+              class="absolute bottom-16 left-4 right-4 flex justify-between items-center"
+            >
+              <div
+                class="bg-[#1A1D2E] rounded-lg px-3 py-2 border border-purple-500/30 flex items-center gap-2"
+              >
+                <Sparkles class="h-4 w-4 text-purple-400" />
+                <span class="text-xs text-purple-400">Insights</span>
+                <div class="space-y-1">
+                  <div class="w-6 h-1 bg-purple-500/60 rounded animate-pulse">
+                  </div>
+                  <div
+                    class="w-4 h-1 bg-purple-500/40 rounded animate-pulse"
+                    style="animation-delay: 0.3s;"
+                  >
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-[#1A1D2E] rounded-lg px-3 py-2 border border-yellow-500/30 flex items-center gap-2"
+              >
+                <Workflow class="h-4 w-4 text-yellow-400" />
+                <span class="text-xs text-yellow-400">Automation</span>
+                <div class="flex items-center gap-1">
+                  <div class="w-2 h-2 bg-yellow-500 rounded-full animate-pulse">
+                  </div>
+                  <span class="text-xs text-yellow-400">Active</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Enhanced AI Terminal -->
+            <div
+              class="absolute bottom-2 left-4 right-4 bg-[#0D1019] border border-[#2A2F42] rounded-md p-3 backdrop-blur-sm"
+            >
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span class="text-xs text-gray-400 ml-1"
+                  >ai-automation-engine</span
+                >
+                <div class="ml-auto flex items-center gap-1">
+                  <div class="w-1 h-1 bg-orange-500 rounded-full animate-pulse">
+                  </div>
+                  <span class="text-xs text-orange-400">OPTIMIZING</span>
+                </div>
+              </div>
+              <div class="font-mono text-xs space-y-1">
+                <div id="ai-task-text" class="text-green-400">
+                  AI > Analyzing data patterns...
+                </div>
+                <div class="flex items-center gap-2">
+                  <div
+                    class="w-24 h-1 bg-[#2A2F42] rounded-full overflow-hidden"
+                  >
+                    <div
+                      id="ai-progress-bar"
+                      class="h-full bg-gradient-to-r from-orange-500 to-red-500 transition-all duration-100"
+                      style="width: 0%;"
+                    >
+                    </div>
+                  </div>
+                  <span id="ai-progress-text" class="text-orange-400 text-xs"
+                    >0%</span
+                  >
+                </div>
+                <div class="flex items-center gap-1">
+                  <span class="text-orange-400">AI ></span>
+                  <div class="w-2 h-3 bg-orange-400 animate-pulse"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="flex flex-wrap gap-2 mt-4">
+          <div
+            class="bg-orange-500/10 text-orange-400 border-orange-500/20 border rounded-full px-3 py-1 text-sm"
+          >
+            Machine Learning
+          </div>
+          <div
+            class="bg-red-500/10 text-red-400 border-red-500/20 border rounded-full px-3 py-1 text-sm"
+          >
+            Neural Networks
+          </div>
+          <div
+            class="bg-yellow-500/10 text-yellow-400 border-yellow-500/20 border rounded-full px-3 py-1 text-sm"
+          >
+            Process Automation
+          </div>
+        </div> -->
+          <!--  -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Third Row - 3 columns -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Tech Consulting -->
+      <div
+        class="project-card p-6 transition-all duration-300 rounded-lg relative"
+      >
+        <div
+          class="bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full w-12 h-12 flex items-center justify-center mb-4"
+        >
+          <Users class="text-white h-6 w-6" />
+        </div>
+        <h2 class="text-xl font-bold mb-3 text-white">Tech Consulting</h2>
+        <p class="text-gray-400 mb-4">
+          Strategic guidance to navigate your digital transformation journey.
+        </p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2 text-sm">
+            <ChevronRight class="h-4 w-4 text-blue-400" />
+            <span class="text-gray-300">Architecture Review</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <ChevronRight class="h-4 w-4 text-blue-400" />
+            <span class="text-gray-300">Technology Stack Selection</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <ChevronRight class="h-4 w-4 text-blue-400" />
+            <span class="text-gray-300">Performance Optimization</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <ChevronRight class="h-4 w-4 text-blue-400" />
+            <span class="text-gray-300">Digital Strategy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Website & Software Maintenance -->
+      <div
+        class="project-card p-6 transition-all duration-300 rounded-lg relative"
+      >
+        <div
+          class="bg-gradient-to-r from-green-500 to-emerald-500 rounded-full w-12 h-12 flex items-center justify-center mb-4"
+        >
+          <Wrench class="text-white h-6 w-6" />
+        </div>
+        <h2 class="text-xl font-bold mb-3 text-white">Maintenance & Support</h2>
+        <p class="text-gray-400 mb-4">
+          Keep your digital assets running smoothly with our 24/7 monitoring and
+          support services.
+        </p>
+        <div class="space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span class="text-gray-300">24/7 System Monitoring</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span class="text-gray-300">Security Updates</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span class="text-gray-300">Performance Optimization</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span class="text-gray-300">Backup & Recovery</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- IT Partnerships -->
+      <div
+        class="project-card p-6 transition-colors flex flex-col items-center justify-center text-center rounded-lg relative"
+      >
+        <div
+          class="bg-gradient-to-r from-blue-500/20 to-blue-700/20 rounded-full w-12 h-12 flex items-center justify-center mb-4"
+        >
+          <Handshake class="text-blue-400 h-6 w-6" />
+        </div>
+        <h2 class="text-xl font-bold mb-3 text-white">IT Partnerships</h2>
+        <p class="text-gray-400 mb-6">
+          Long-term technology partnerships that scale with your growth and
+          business needs.
+        </p>
+        <a
+          href="/contact"
+          class="border-blue-500/30 text-blue-400 hover:bg-blue-500/10 bg-transparent border rounded-md px-4 py-2 flex items-center justify-center text-sm font-semibold z-50"
+        >
+          Let's Partner <ChevronRight class="h-4 w-4 ml-1" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const aiTasks = [
+      "Analyzing data patterns...",
+      "Optimizing workflow...",
+      "Generating insights...",
+      "Learning from feedback...",
+      "Automating processes...",
+    ];
+
+    const aiTaskText = document.getElementById("ai-task-text");
+    const aiProgressBar = document.getElementById("ai-progress-bar");
+    const aiProgressText = document.getElementById("ai-progress-text");
+
+    if (aiTaskText && aiProgressBar && aiProgressText) {
+      let currentAiTaskIndex = 0;
+      let aiProgress = 0;
+
+      setInterval(() => {
+        aiProgress += 2;
+        if (aiProgress > 100) {
+          aiProgress = 0;
+          currentAiTaskIndex = (currentAiTaskIndex + 1) % aiTasks.length;
+          aiTaskText.textContent = `AI > ${aiTasks[currentAiTaskIndex]}`;
+        }
+        aiProgressBar.style.width = `${aiProgress}%`;
+        aiProgressText.textContent = `${aiProgress}%`;
+      }, 100);
+    }
+  });
+</script>

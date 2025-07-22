@@ -33,42 +33,55 @@ const testimonials = [
   },
 ];
 
-// Duplicate testimonials for a seamless loop
+// For desktop: duplicate testimonials for seamless loop
 const repeatedTestimonials = [...testimonials, ...testimonials];
 ---
 
 <style>
-  /* Keyframe animation for the infinite scroll */
+  /* Desktop animation for infinite scroll */
   @keyframes scroll {
     0% {
       transform: translateX(0);
     }
     100% {
-      /* Move the container left by the width of the original set of testimonials */
       transform: translateX(calc(-100% / 2));
     }
   }
 
-  /* Apply the animation to the flex container */
-  .scrolling-wrapper {
+  /* Desktop scrolling wrapper */
+  .desktop-scrolling {
     animation: scroll 40s linear infinite;
   }
 
-  /* New styles for the card to apply a gradient border */
+  /* Mobile snap scroll styles */
+  .mobile-scroll {
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+
+  .mobile-scroll::-webkit-scrollbar {
+    display: none; /* Chrome/Safari/Webkit */
+  }
+
+  .snap-item {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+
+  /* Card gradient border styles */
   .card {
-    position: relative; /* Needed for pseudo-element positioning */
-    /* background-color: #1c1c1c; Keep your original card background */
-    border: none; /* Remove default border as we're creating a custom one */
-    /* Add padding to account for the pseudo-element border */
-    padding: 6px; /* Adjust as needed to control border thickness */
+    position: relative;
+    border: none;
+    padding: 6px;
   }
 
   .card::before {
     content: "";
     position: absolute;
-    inset: 0; /* Cover the entire card */
-    padding: 2px; /* This creates the border thickness */
-    border-radius: 0.5rem; /* Match the card's border-radius */
+    inset: 0;
+    padding: 2px;
+    border-radius: 0.5rem;
     background: linear-gradient(360deg, #1a2a4c, #5676c9d1, white 70%)
       border-box;
     -webkit-mask:
@@ -76,22 +89,33 @@ const repeatedTestimonials = [...testimonials, ...testimonials];
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    z-index: -1; /* Place it behind the content */
+    z-index: -1;
   }
 
-  /* Adjust the inner content's padding to match */
   .card > div {
-    padding: 1.5rem; /* Original p-6 translates to 1.5rem */
-    /* background-color: #1c1c1c; Ensure content background matches card background */
-    border-radius: inherit; /* Inherit border-radius from parent for rounded inner content */
-    height: 100%; /* Ensure inner content fills the card */
+    padding: 1.5rem;
+    border-radius: inherit;
+    height: 100%;
+  }
+
+  /* Dot indicator styles */
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: background-color 0.3s ease;
+  }
+
+  .dot.active {
+    background-color: #60a5fa;
   }
 </style>
 
 <div class="text-white py-12 md:py-24">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <header class="text-center mb-12 md:mb-16">
-      <p class="text-blue-400 font-mono text-sm mb-2">[04] — Testimonials</p>
+      <p class="text-blue-400 font-mono text-sm mb-2">[02] — Testimonials</p>
       <h2 class="text-5xl md:text-7xl font-bold">
         Don't take my word for it<span class="text-blue-400">*</span>
       </h2>
@@ -99,26 +123,19 @@ const repeatedTestimonials = [...testimonials, ...testimonials];
     </header>
   </div>
 
-  <div class="w-full overflow-hidden relative">
+  <!-- Mobile Version: Draggable snap scroll -->
+  <div class="block md:hidden">
     <div
-      class="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-[#111111] to-transparent z-10"
+      id="mobileTestimonials"
+      class="mobile-scroll flex overflow-x-auto px-6 gap-6"
     >
-    </div>
-    <div
-      class="absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-[#111111] to-transparent z-10"
-    >
-    </div>
-
-    <div class="scrolling-wrapper flex gap-6">
       {
-        repeatedTestimonials.map((testimonial, index) => (
-          <div class="card flex-shrink-0 w-80 md:w-96 rounded-lg flex flex-col justify-between">
-            {/* The actual content of the card is now wrapped in a div */}
+        testimonials.map((testimonial, index) => (
+          <div class="card snap-item flex-shrink-0 w-[85vw] rounded-lg flex flex-col justify-between">
             <div>
               <div>
                 <div class="flex justify-between items-start mb-4">
                   <div class="flex items-center gap-1">
-                    {/* Updated to display actual rating */}
                     <span class="text-xs">{testimonial.rating}/5</span>
                     <div class="flex text-green-500">
                       {"★★★★★".split("").map((star, i) => (
@@ -135,7 +152,73 @@ const repeatedTestimonials = [...testimonials, ...testimonials];
                     </div>
                   </div>
                   <span class="text-6xl text-gray-600/50 leading-[0.5] font-serif">
-                    ”
+                    "
+                  </span>
+                </div>
+                <p class="text-gray-300 leading-relaxed text-sm">
+                  {testimonial.quote}
+                </p>
+              </div>
+              <div class="flex items-center gap-3 mt-6">
+                <div class={`w-8 h-8 rounded-full ${testimonial.avatar}`} />
+                <span class="text-sm font-medium">{testimonial.author}</span>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Dot indicators for mobile -->
+    <div class="flex justify-center gap-2 mt-6">
+      {
+        testimonials.map((_, index) => (
+          <button
+            class="dot"
+            onclick={`scrollToTestimonial(${index})`}
+            id={`dot-${index}`}
+          />
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Desktop Version: Infinite scroll -->
+  <div class="hidden md:block w-full overflow-hidden relative">
+    <div
+      class="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-[#111111] to-transparent z-10"
+    >
+    </div>
+    <div
+      class="absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-[#111111] to-transparent z-10"
+    >
+    </div>
+
+    <div class="desktop-scrolling flex gap-6">
+      {
+        repeatedTestimonials.map((testimonial, index) => (
+          <div class="card flex-shrink-0 w-80 lg:w-96 rounded-lg flex flex-col justify-between">
+            <div>
+              <div>
+                <div class="flex justify-between items-start mb-4">
+                  <div class="flex items-center gap-1">
+                    <span class="text-xs">{testimonial.rating}/5</span>
+                    <div class="flex text-green-500">
+                      {"★★★★★".split("").map((star, i) => (
+                        <span
+                          class={
+                            i < Math.floor(testimonial.rating)
+                              ? "text-green-500"
+                              : "text-gray-600"
+                          }
+                        >
+                          {star}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <span class="text-6xl text-gray-600/50 leading-[0.5] font-serif">
+                    "
                   </span>
                 </div>
                 <p class="text-gray-300 leading-relaxed">{testimonial.quote}</p>
@@ -151,3 +234,48 @@ const repeatedTestimonials = [...testimonials, ...testimonials];
     </div>
   </div>
 </div>
+
+<script>
+  let currentIndex = 0;
+
+  function scrollToTestimonial(index) {
+    const container = document.getElementById("mobileTestimonials");
+    const cardWidth = container.scrollWidth / 4; // 4 testimonials
+    container.scrollTo({
+      left: cardWidth * index,
+      behavior: "smooth",
+    });
+    updateDots(index);
+  }
+
+  function updateDots(activeIndex) {
+    document.querySelectorAll(".dot").forEach((dot, index) => {
+      dot.classList.toggle("active", index === activeIndex);
+    });
+  }
+
+  // Handle scroll events to update dot indicators
+  document.addEventListener("DOMContentLoaded", function () {
+    const container = document.getElementById("mobileTestimonials");
+    if (!container) return;
+
+    let scrollTimeout;
+
+    container.addEventListener("scroll", function () {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const cardWidth = container.scrollWidth / 4;
+        const scrollLeft = container.scrollLeft;
+        const newIndex = Math.round(scrollLeft / cardWidth);
+
+        if (newIndex !== currentIndex) {
+          currentIndex = newIndex;
+          updateDots(currentIndex);
+        }
+      }, 100);
+    });
+
+    // Initialize first dot as active
+    updateDots(0);
+  });
+</script>

@@ -1,0 +1,22 @@
+---
+// BentoGrid.astro
+export interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
+
+// Simple class merging function to replace cn
+function clsx(...classes: (string | undefined)[]) {
+  return classes.filter(Boolean).join(" ");
+}
+---
+
+<div
+  class={clsx(
+    "mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[18rem] md:grid-cols-3",
+    className
+  )}
+>
+  <slot />
+</div>

@@ -1,0 +1,64 @@
+---
+// src/components/SelectedWork.astro
+
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/lvl2Components/Navbar.astro";
+import ScrollingText from "../components/lvl1Components/ScrollingText.astro";
+import Footer from "../components/lvl2Components/Footer.astro";
+
+import BentoGrid from "../components/lvl1Components/BentoGrid.astro";
+import BentoGridItem from "../components/lvl1Components/BentoGridItem.astro";
+
+const items = [
+  {
+    title: "The Dawn of Innovation",
+    description: "Explore the birth of groundbreaking ideas and inventions.",
+  },
+  {
+    title: "The Digital Revolution",
+    description: "Dive into the transformative power of technology.",
+  },
+  {
+    title: "The Art of Design",
+    description: "Discover the beauty of thoughtful and functional design.",
+  },
+  {
+    title: "The Power of Communication",
+    description:
+      "Understand the impact of effective communication in our lives.",
+  },
+  {
+    title: "The Pursuit of Knowledge",
+    description: "Join the quest for understanding and enlightenment.",
+  },
+  {
+    title: "The Joy of Creation",
+    description: "Experience the thrill of bringing ideas to life.",
+  },
+  {
+    title: "The Spirit of Adventure",
+    description: "Embark on exciting journeys and thrilling discoveries.",
+  },
+];
+
+import { Icon } from "astro-icon/components";
+import AgencyBentoGrid from "../components/lvl3Components/AgencyBentoGrid.astro";
+
+const clientStats = [
+  "5+ years of experience",
+  "> 95% / client retention rate",
+  "100+ / satisfied clients",
+  // "250+ / projects finished",
+];
+---
+
+<Layout>
+  <Navbar />
+
+  <AgencyBentoGrid />
+
+  <div class="">
+    <ScrollingText items={clientStats} speed="normal" className="py-4" />
+  </div>
+  <Footer />
+</Layout>
