@@ -1,6 +1,7 @@
 ---
 // I've re-added the SVG icons for a complete component.
 // You can replace these with your preferred icon library or SVGs.
+import { Instagram, LinkedinIcon, Mail, X } from "@lucide/astro";
 import Logo from "../../assets/logo.svg";
 ---
 
@@ -11,7 +12,7 @@ import Logo from "../../assets/logo.svg";
   >
     <!-- Logo -->
     <a href="/" aria-label="Homepage">
-      <Logo class="w-60 h-20" />
+      <Logo class="w-40 md:w-60 h-20" />
     </a>
 
     <!-- Center Section - Desktop only -->
@@ -30,19 +31,19 @@ import Logo from "../../assets/logo.svg";
           <span class="nav-text">Projects</span>
         </a>
         <a
-          href="#services"
+          href="/#services"
           class="nav-link px-4 py-2 text-lg font-medium transition-all duration-300 hover:text-blue-400 relative overflow-hidden"
         >
           <span class="nav-text">Services</span>
         </a>
         <a
-          href="#approach"
+          href="/#approach"
           class="nav-link px-4 py-2 text-lg font-medium transition-all duration-300 hover:text-blue-400 relative overflow-hidden"
         >
           <span class="nav-text">Approach</span>
         </a>
         <a
-          href="#about"
+          href="/#about"
           class="nav-link px-4 py-2 text-lg font-medium transition-all duration-300 hover:text-blue-400 relative overflow-hidden"
         >
           <span class="nav-text">About</span>
@@ -116,27 +117,20 @@ import Logo from "../../assets/logo.svg";
           >Home</a
         >
         <a
-          href="/about"
-          class="text-4xl font-thin text-gray-300 hover:text-white">About</a
+          href="/projects"
+          class="text-4xl font-thin text-gray-300 hover:text-white">Projects</a
         >
         <a
-          href="/cases"
-          class="text-4xl font-thin text-gray-300 hover:text-white">Cases</a
-        >
-        <div class="flex items-center space-x-4">
-          <a
-            href="/vacancies"
-            class="text-4xl font-thin text-gray-300 hover:text-white"
-            >Vacancies</a
-          >
-          <span
-            class="text-xs border border-gray-500 rounded-full px-3 py-1 mt-1 text-gray-300"
-            >We're Hiring!</span
-          >
-        </div>
-        <a
-          href="/services"
+          href="/#services"
           class="text-4xl font-thin text-gray-300 hover:text-white">Services</a
+        >
+        <a
+          href="/#approach"
+          class="text-4xl font-thin text-gray-300 hover:text-white">Approach</a
+        >
+        <a
+          href="/#about"
+          class="text-4xl font-thin text-gray-300 hover:text-white">About</a
         >
         <a
           href="/contact"
@@ -149,14 +143,16 @@ import Logo from "../../assets/logo.svg";
         <!-- Secondary Links -->
         <div class="border-t border-gray-700 pt-6">
           <nav class="flex flex-col items-start space-y-3">
-            <a href="/terms" class="text-md text-gray-400 hover:text-white"
+            <!-- <a href="/terms" class="text-md text-gray-400 hover:text-white"
               >Terms of Service</a
             >
             <a href="/help" class="text-md text-gray-400 hover:text-white"
               >Help center</a
-            >
-            <a href="/blog" class="text-md text-gray-400 hover:text-white"
-              >Blog</a
+            > -->
+            <a
+              href="https://blog.webdrip.in"
+              target="_blank"
+              class="text-md text-gray-400 hover:text-white">Blog</a
             >
           </nav>
         </div>
@@ -164,32 +160,35 @@ import Logo from "../../assets/logo.svg";
         <!-- Social Icons -->
         <div class="flex space-x-3 mt-8 text-gray-400">
           <a
-            href="#"
+            href="https://www.linkedin.com/in/narottam-sahu-40008a1bb/"
+            target="_blank"
             class="p-3 border border-gray-700 rounded-lg hover:border-white hover:text-white transition-colors"
             aria-label="Telegram"
           >
-            <!-- <TelegramIcon /> -->
+            <LinkedinIcon />
           </a>
           <a
-            href="#"
+            href="https://x.com/_Narottam_dev"
+            target="_blank"
             class="p-3 border border-gray-700 rounded-lg hover:border-white hover:text-white transition-colors"
             aria-label="Email"
           >
-            <!-- <EmailIcon /> -->
+            <X />
           </a>
           <a
-            href="#"
+            href="https://www.instagram.com/_webdrip/"
+            target="_blank"
             class="p-3 border border-gray-700 rounded-lg hover:border-white hover:text-white transition-colors"
             aria-label="WhatsApp"
           >
-            <!-- <WhatsAppIcon /> -->
+            <Instagram />
           </a>
           <a
-            href="#"
+            href="mailto:webdripdev@gmail.com"
             class="p-3 border border-gray-700 rounded-lg hover:border-white hover:text-white transition-colors"
             aria-label="Instagram"
           >
-            <!-- <InstagramIcon /> -->
+            <Mail />
           </a>
         </div>
       </div>
