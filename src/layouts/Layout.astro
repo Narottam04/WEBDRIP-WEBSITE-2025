@@ -6,11 +6,183 @@ import "@fontsource-variable/montserrat";
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- ==> ESSENTIAL META TAGS <== -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WEBDRIP: Mobile App, Web Design, & AI Automation Services</title>
+    <meta
+      name="description"
+      content="WEBDRIP delivers high-impact web design, custom mobile app development, and AI automation for startups and growing businesses. Let's build your success online."
+    />
+    <meta
+      name="keywords"
+      content="web design, web development, mobile app development, AI automation, SaaS development, tech consulting, App Studio, Mumbai, US, UK, APAC"
+    />
+    <meta name="author" content="WEBDRIP" />
+
+    <!-- ==> SEO & INDEXING DIRECTIVES <== -->
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <link rel="canonical" href="https://www.webdrip.in/" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
+    <meta name="rating" content="General" />
+
+    <!-- ==> GEOGRAPHICAL TARGETING (IF APPLICABLE) <== -->
+    <meta name="geo.region" content="IN-MH" />
+    <meta name="geo.placename" content="Mumbai" />
+
+    <!-- ==> BRAND & APPEARANCE <== -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#0D1019" />
+
+    <!-- ==> OPEN GRAPH (OG) META TAGS FOR SOCIAL SHARING <== -->
+    <meta
+      property="og:title"
+      content="WEBDRIP: Web Design, Mobile App & AI Automation Services"
+    />
+    <meta
+      property="og:description"
+      content="WEBDRIP delivers high-impact web design, custom mobile app development, and AI automation for startups and growing businesses. Let's build your success online."
+    />
+    <meta property="og:image" content="https://webdrip.in/social.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://www.webdrip.in/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="WEBDRIP" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- ==> TWITTER CARD META TAGS <== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@YourTwitterHandle" />
+    <meta name="twitter:creator" content="@YourTwitterHandle" />
+    <meta
+      name="twitter:title"
+      content="WEBDRIP: Web Design, Mobile App & AI Automation Services"
+    />
+    <meta
+      name="twitter:description"
+      content="WEBDRIP delivers high-impact web design, custom mobile app development, and AI automation for startups and growing businesses. Let's build your success online."
+    />
+    <meta
+      name="twitter:image"
+      content="https://res.cloudinary.com/https-webdrip-in/image/upload/v1687586383/Logo_Design-_Dark-thin_with_border_g3as7c.png"
+    />
+    <meta name="twitter:image:alt" content="WEBDRIP Logo" />
+
+    <!-- ==> JSON-LD SCHEMA MARKUP FOR RICH SNIPPETS <== -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "WEBDRIP",
+            "url": "https://www.webdrip.in/",
+            "logo": "https://res.cloudinary.com/https-webdrip-in/image/upload/v1687586383/Logo_Design-_Dark-thin_with_border_g3as7c.png",
+            "sameAs": [
+              "https://www.your-facebook-url.com/",
+              "https://www.your-twitter-url.com/",
+              "https://www.your-linkedin-url.com/"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "Sales",
+              "email": "business@webdrip.in"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "url": "https://www.webdrip.in/",
+            "name": "WEBDRIP",
+            "publisher": {
+              "@id": "https://www.webdrip.in/#organization"
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://www.webdrip.in/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@type": "ProfessionalService",
+            "name": "WEBDRIP",
+            "image": "https://res.cloudinary.com/https-webdrip-in/image/upload/v1687586383/Logo_Design-_Dark-thin_with_border_g3as7c.png",
+            "@id": "https://www.webdrip.in/#service",
+            "url": "https://www.webdrip.in/",
+            "address": {
+              "addressLocality": "Mumbai",
+              "addressRegion": "MH",
+              "addressCountry": "IN"
+            },
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+              ],
+              "opens": "09:00",
+              "closes": "18:00"
+            },
+            "hasOffer": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Website Design & Development"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Mobile App Development"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Custom Mobile App Development"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Custom SaaS Software Development"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": { "@type": "Service", "name": "AI Automation" }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": { "@type": "Service", "name": "Tech Consulting" }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Maintenance & Support"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body class="bg-[#0D1019]">
     <slot />
