@@ -7,8 +7,6 @@ import icon from "astro-icon";
 
 import sitemap from "@astrojs/sitemap";
 
-import purgecss from "astro-purgecss";
-
 import playformCompress from "@playform/compress";
 
 // https://astro.build/config
@@ -17,10 +15,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [
-    icon(),
-    sitemap(),
-    purgecss(),
-    playformCompress(),
-  ],
+  integrations: [icon(), sitemap(), playformCompress()],
 });
